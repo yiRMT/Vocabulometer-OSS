@@ -11,6 +11,9 @@
 		6798F41228C2F66400F6B0C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6798F41128C2F66400F6B0C6 /* ContentView.swift */; };
 		6798F41428C2F66500F6B0C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6798F41328C2F66500F6B0C6 /* Assets.xcassets */; };
 		6798F41728C2F66500F6B0C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6798F41628C2F66500F6B0C6 /* Preview Assets.xcassets */; };
+		6798F41F28C2F8C700F6B0C6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6798F41E28C2F8C700F6B0C6 /* FirebaseAuth */; };
+		6798F42128C2F8C700F6B0C6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6798F42028C2F8C700F6B0C6 /* FirebaseFirestore */; };
+		6798F42328C2F8C700F6B0C6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6798F42228C2F8C700F6B0C6 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6798F41F28C2F8C700F6B0C6 /* FirebaseAuth in Frameworks */,
+				6798F42128C2F8C700F6B0C6 /* FirebaseFirestore in Frameworks */,
+				6798F42328C2F8C700F6B0C6 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,11 @@
 			dependencies = (
 			);
 			name = "Vocabulometer-OSS";
+			packageProductDependencies = (
+				6798F41E28C2F8C700F6B0C6 /* FirebaseAuth */,
+				6798F42028C2F8C700F6B0C6 /* FirebaseFirestore */,
+				6798F42228C2F8C700F6B0C6 /* FirebaseStorage */,
+			);
 			productName = "Vocabulometer-OSS";
 			productReference = 6798F40C28C2F66400F6B0C6 /* Vocabulometer-OSS.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 6798F40328C2F66400F6B0C6;
+			packageReferences = (
+				6798F41D28C2F8C700F6B0C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 6798F40D28C2F66400F6B0C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +353,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6798F41D28C2F8C700F6B0C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6798F41E28C2F8C700F6B0C6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6798F41D28C2F8C700F6B0C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		6798F42028C2F8C700F6B0C6 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6798F41D28C2F8C700F6B0C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		6798F42228C2F8C700F6B0C6 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6798F41D28C2F8C700F6B0C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6798F40428C2F66400F6B0C6 /* Project object */;
 }
