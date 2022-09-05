@@ -11,12 +11,23 @@ struct AuthView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Image("Splash")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.all)
+                
                 SignInView()
                     .padding(.all)
                 
                 NavigationLink {
                     VStack {
+                        Image("Splash")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.all)
+                        
                         SignUpView().padding(.all)
+                        
                         Spacer()
                     }
                 } label: {
@@ -70,14 +81,14 @@ struct SignInView: View {
                 } label: {
                     Image(systemName: self.isPasswordVisible ? "eye.slash.fill" : "eye.fill")
                 }
-            }
+            }.padding(.bottom)
             
             HStack {
                 Spacer()
                 Button("Forgot Password?") {
                     
                 }
-            }
+            }.padding(.bottom)
             
             Button {
                 // action
@@ -136,8 +147,7 @@ struct SignUpView: View {
                 } label: {
                     Image(systemName: self.isPasswordVisible ? "eye.slash.fill" : "eye.fill")
                 }
-            }
-            .padding(.bottom)
+            }.padding(.bottom)
             
             HStack {
                 if isConfirmVisible {
@@ -159,14 +169,14 @@ struct SignUpView: View {
                 } label: {
                     Image(systemName: self.isConfirmVisible ? "eye.slash.fill" : "eye.fill")
                 }
-            }
+            }.padding(.bottom)
             
             HStack {
                 Spacer()
                 Button("Forgot Password?") {
                     
                 }
-            }
+            }.padding(.bottom)
             
             Button {
                 // action
