@@ -19,6 +19,7 @@
 		6798F41128C2F66400F6B0C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6798F41328C2F66500F6B0C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6798F41628C2F66500F6B0C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		67E39EC128C6865300C57125 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +36,7 @@
 		6798F40328C2F66400F6B0C6 = {
 			isa = PBXGroup;
 			children = (
+				67E39EC128C6865300C57125 /* README.md */,
 				6798F40E28C2F66400F6B0C6 /* Vocabulometer-OSS */,
 				6798F40D28C2F66400F6B0C6 /* Products */,
 			);
