@@ -15,6 +15,7 @@
 		6798F41F28C2F8C700F6B0C6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6798F41E28C2F8C700F6B0C6 /* FirebaseAuth */; };
 		6798F42128C2F8C700F6B0C6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6798F42028C2F8C700F6B0C6 /* FirebaseFirestore */; };
 		6798F42328C2F8C700F6B0C6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6798F42228C2F8C700F6B0C6 /* FirebaseStorage */; };
+		67E39EC028C6845A00C57125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67E39EBF28C6845A00C57125 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6798F41128C2F66400F6B0C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6798F41328C2F66500F6B0C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6798F41628C2F66500F6B0C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		67E39EBF28C6845A00C57125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				6798F41128C2F66400F6B0C6 /* ContentView.swift */,
 				6762113628C3EA830017211F /* AuthView.swift */,
 				6798F41328C2F66500F6B0C6 /* Assets.xcassets */,
+				67E39EBF28C6845A00C57125 /* GoogleService-Info.plist */,
 				6798F41528C2F66500F6B0C6 /* Preview Content */,
 			);
 			path = "Vocabulometer-OSS";
@@ -144,6 +147,7 @@
 			files = (
 				6798F41728C2F66500F6B0C6 /* Preview Assets.xcassets in Resources */,
 				6798F41428C2F66500F6B0C6 /* Assets.xcassets in Resources */,
+				67E39EC028C6845A00C57125 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
