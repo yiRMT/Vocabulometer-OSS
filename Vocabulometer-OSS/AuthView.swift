@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AuthView: View {
+    @ObservedObject var authManager: AuthManager
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -16,7 +18,7 @@ struct AuthView: View {
                     .scaledToFit()
                     .padding(.all)
                 
-                SignInView()
+                SignInView(authManager: authManager)
                     .padding(.all)
                 
                 NavigationLink {
@@ -26,7 +28,7 @@ struct AuthView: View {
                             .scaledToFit()
                             .padding(.all)
                         
-                        SignUpView().padding(.all)
+                        SignUpView(authManager: authManager).padding(.all)
                         
                         Spacer()
                     }
@@ -43,11 +45,12 @@ struct AuthView: View {
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView()
+        AuthView(authManager: AuthManager())
     }
 }
 
 struct SignInView: View {
+    @ObservedObject var authManager: AuthManager
     @State var email = ""
     @State var password = ""
     @State var isPasswordVisible = false
@@ -91,7 +94,11 @@ struct SignInView: View {
             }.padding(.bottom)
             
             Button {
-                // action
+                Task {
+                    if let error = try await authManager.signIn(withEmail: email, password: password) {
+                        print(error.localizedDescription)
+                    }
+                }
             } label: {
                 HStack {
                     Spacer()
@@ -107,16 +114,19 @@ struct SignInView: View {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignInView(authManager: AuthManager())
     }
 }
 
 struct SignUpView: View {
+    @ObservedObject var authManager: AuthManager
+    
     @State var email = ""
     @State var password = ""
     @State var confirmPassword = ""
     @State var isPasswordVisible = false
     @State var isConfirmVisible = false
+    @State var result = false
     
     var body: some View {
         VStack {
@@ -151,13 +161,13 @@ struct SignUpView: View {
             
             HStack {
                 if isConfirmVisible {
-                    TextField("Confirm Password", text: $password)
+                    TextField("Confirm Password", text: $confirmPassword)
                         .keyboardType(.asciiCapable)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .textFieldStyle(.roundedBorder)
                 } else {
-                    SecureField("Confirm Password", text: self.$password)
+                    SecureField("Confirm Password", text: self.$confirmPassword)
                         .keyboardType(.alphabet)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
@@ -179,7 +189,11 @@ struct SignUpView: View {
             }.padding(.bottom)
             
             Button {
-                // action
+                Task {
+                    if let error = try await authManager.signUp(withEmail: email, password: password, confirmPassword: confirmPassword) {
+                        print(error.localizedDescription)
+                    }
+                }
             } label: {
                 HStack {
                     Spacer()
@@ -196,6 +210,6 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(authManager: AuthManager())
     }
 }
