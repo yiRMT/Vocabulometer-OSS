@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var authManager = AuthManager()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        if authManager.isSignedIn {
+            HomeView(authManager: authManager)
+        } else {
+            AuthView(authManager: authManager)
         }
     }
 }
