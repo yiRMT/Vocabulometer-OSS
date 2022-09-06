@@ -22,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		674464D328C786800010C805 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		674464D528C7C6DF0010C805 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6762113628C3EA830017211F /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		6798F40C28C2F66400F6B0C6 /* Vocabulometer-OSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vocabulometer-OSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6798F40F28C2F66400F6B0C6 /* Vocabulometer_OSSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vocabulometer_OSSApp.swift; sourceTree = "<group>"; };
@@ -29,8 +30,8 @@
 		6798F41328C2F66500F6B0C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6798F41628C2F66500F6B0C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		67E39EBF28C6845A00C57125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		67E39EC228C689D100C57125 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		67E39EC128C6865300C57125 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		67E39EC228C689D100C57125 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +51,7 @@
 		6798F40328C2F66400F6B0C6 = {
 			isa = PBXGroup;
 			children = (
+				674464D528C7C6DF0010C805 /* LICENSE */,
 				67E39EC128C6865300C57125 /* README.md */,
 				6798F40E28C2F66400F6B0C6 /* Vocabulometer-OSS */,
 				6798F40D28C2F66400F6B0C6 /* Products */,
