@@ -23,10 +23,17 @@ struct MainView: View {
                     HStack {
                         Spacer()
                         NavigationLink(destination: SettingsView(authManager: authManager)) {
-                            Label("", systemImage: "gear")
+                            Label {
+                                Text("")
+                            } icon: {
+                                Image(systemName: "gear")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: nil, height: 30.0)
+                            }.foregroundColor(.gray)
                         }
                     }
-                }
+                }.padding(.horizontal)
                 
                 MainTabView()
             }

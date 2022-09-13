@@ -11,13 +11,23 @@ struct SettingsView: View {
     @ObservedObject var authManager: AuthManager
     
     var body: some View {
-        Button {
-            if let error = authManager.signOut() {
-                print(error.localizedDescription)
+        List {
+            Section {
+                NavigationLink(destination: AboutView()) {
+                    Text("About")
+                }
             }
-        } label: {
-            Text("Sign out")
+            Section {
+                Button {
+                    if let error = authManager.signOut() {
+                        print(error.localizedDescription)
+                    }
+                } label: {
+                    Text("Sign out").foregroundColor(.red)
+                }
+            }
         }
+        .navigationTitle("Settings")
     }
 }
 
