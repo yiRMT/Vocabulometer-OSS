@@ -11,11 +11,31 @@ import FirebaseAuth
 class Authentication {
     let firebaseAuth = Auth.auth()
     
-    func signOut() {
+    func signOut() -> Error? {
         do {
             try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+        } catch {
+            print(error.localizedDescription)
+            return error
+        }
+        return nil
+    }
+    
+    func signIn(withEmail email: String, password: String) async throws {
+        do {
+            try await Auth.auth().signIn(withEmail: email, password: password)
+        } catch {
+            print(error.localizedDescription)
+            throw error
+        }
+    }
+    
+    func signUp(withEmail email: String, password: String) async throws {
+        do {
+            try await Auth.auth().createUser(withEmail: email, password: password)
+        } catch {
+            print(error.localizedDescription)
+            throw error
         }
     }
 }

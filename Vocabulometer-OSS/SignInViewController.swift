@@ -8,8 +8,11 @@
 import UIKit
 
 class SignInViewController: UIViewController {
+    let auth = Authentication()
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordVisibilityButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,30 @@ class SignInViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func tapPasswordVisibilityButton(_ sender: Any) {
+        if passwordTextField.isSecureTextEntry {
+            passwordVisibilityButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        } else {
+            passwordVisibilityButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        }
+        passwordTextField.isSecureTextEntry.toggle()
+        
+    }
+    
+    @IBAction func tapSignInButton(_ sender: Any) {
+        Task {
+            do {
+                try await auth.signIn(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! MainViewController
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                present(vc, animated: true)
+            } catch {
+                
+            }
+        }
+    }
     
     func initEmailTextField() {
         emailTextField.placeholder = "Email"
