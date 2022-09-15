@@ -41,14 +41,17 @@
                                                         <rect key="frame" x="0.0" y="42" width="350" height="34.333333333333343"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYp-qu-f7t">
-                                                                <rect key="frame" x="0.0" y="0.0" width="275" height="34.333333333333336"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="292.33333333333331" height="34.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtF-WW-HVU">
-                                                                <rect key="frame" x="275" y="0.0" width="75" height="34.333333333333336"/>
+                                                                <rect key="frame" x="292.33333333333331" y="0.0" width="57.666666666666686" height="34.333333333333336"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="tapPasswordVisibilityButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JO0-2o-MuW"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -67,6 +70,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Sign in">
                                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="tapSignInButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aym-Sq-nc9"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVb-UA-Hxl">
                                                 <rect key="frame" x="100.33333333333333" y="455" width="189.66666666666669" height="34.333333333333314"/>
@@ -125,6 +131,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="ASu-oe-13S" id="7pY-8E-StS"/>
                         <outlet property="passwordTextField" destination="qYp-qu-f7t" id="m47-I3-Qqz"/>
+                        <outlet property="passwordVisibilityButton" destination="gtF-WW-HVU" id="ETs-sW-c96"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -134,7 +141,7 @@
         <!--Sign Up-->
         <scene sceneID="hmW-m0-eW8">
             <objects>
-                <viewController storyboardIdentifier="SignUp" title="Sign Up" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WLw-Vx-H1v" customClass="SignOutViewController" customModule="Vocabulometer_OSS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUp" title="Sign Up" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WLw-Vx-H1v" customClass="SignUpViewController" customModule="Vocabulometer_OSS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OgV-EH-HRV">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,14 +164,17 @@
                                                         <rect key="frame" x="0.0" y="42" width="350" height="34.333333333333343"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6B2-r6-zwc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="275" height="34.333333333333336"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="292.33333333333331" height="34.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6Y-ls-dcW">
-                                                                <rect key="frame" x="275" y="0.0" width="75" height="34.333333333333336"/>
+                                                                <rect key="frame" x="292.33333333333331" y="0.0" width="57.666666666666686" height="34.333333333333336"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="tapNewPasswordVisibilityButton:" destination="WLw-Vx-H1v" eventType="touchDown" id="XxN-L2-LCy"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -172,14 +182,17 @@
                                                         <rect key="frame" x="0.0" y="84.333333333333314" width="350" height="34.333333333333343"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gpy-F5-wdQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="275" height="34.333333333333336"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="292.33333333333331" height="34.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mS8-VG-hip">
-                                                                <rect key="frame" x="275" y="0.0" width="75" height="34.333333333333336"/>
+                                                                <rect key="frame" x="292.33333333333331" y="0.0" width="57.666666666666686" height="34.333333333333336"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="tapConfirmPasswordVisibilityButton:" destination="WLw-Vx-H1v" eventType="touchDown" id="f27-7a-GYa"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -197,6 +210,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Sign up">
                                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="tapSignUpButton:" destination="WLw-Vx-H1v" eventType="touchUpInside" id="n7u-br-qop"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -238,6 +254,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s8M-Wd-e8C"/>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="gpy-F5-wdQ" id="EmN-xd-f1m"/>
+                        <outlet property="confirmPasswordVisibilityButton" destination="mS8-VG-hip" id="yP7-8c-x8K"/>
+                        <outlet property="emailTextField" destination="X73-Vm-35s" id="cHQ-z9-0Gm"/>
+                        <outlet property="newPasswordTextField" destination="6B2-r6-zwc" id="Ful-sN-7zQ"/>
+                        <outlet property="newPasswordVisibilityButton" destination="C6Y-ls-dcW" id="X1j-86-Bvy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZh-F0-5Ew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -263,6 +286,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="eye.fill" catalog="system" width="128" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
