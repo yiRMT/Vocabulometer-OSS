@@ -10,6 +10,7 @@ import UIKit
 class SignInViewController: UIViewController {
     let auth = Authentication()
     
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordVisibilityButton: UIButton!
@@ -19,6 +20,7 @@ class SignInViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         navigationItem.title = title
+        logoImageView.image = UIImage(named: "Splash")
         initEmailTextField()
         initPasswordField()
     }
@@ -44,6 +46,10 @@ class SignInViewController: UIViewController {
         
     }
     
+    @IBAction func tapForgotPasswordButton(_ sender: Any) {
+        
+    }
+    
     @IBAction func tapSignInButton(_ sender: Any) {
         Task {
             do {
@@ -59,15 +65,31 @@ class SignInViewController: UIViewController {
     }
     
     func initEmailTextField() {
+        emailTextField.delegate = self
         emailTextField.placeholder = "Email"
         emailTextField.textContentType = .username
         emailTextField.keyboardType = .emailAddress
     }
     
     func initPasswordField() {
+        passwordTextField.delegate = self
         passwordTextField.placeholder = "Password"
         passwordTextField.textContentType = .password
         passwordTextField.keyboardType = .asciiCapable
         passwordTextField.isSecureTextEntry = true
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    /// Close system keyboard when you press return button
+    /// - Parameter textField: UITextField
+    /// - Returns: true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let nextTag = textField.tag + 1
+        if let nextTextField = self.view.viewWithTag(nextTag) {
+            nextTextField.becomeFirstResponder()
+        }
+        return true
     }
 }
