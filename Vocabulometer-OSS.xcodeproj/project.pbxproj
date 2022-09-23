@@ -14,6 +14,7 @@
 		679AB2C828D2509F005E8B94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 679AB2C728D2509F005E8B94 /* GoogleService-Info.plist */; };
 		679AB2CA28D25327005E8B94 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AB2C928D25327005E8B94 /* SignUpViewController.swift */; };
 		679AB2CC28D27254005E8B94 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AB2CB28D27254005E8B94 /* Authentication.swift */; };
+		67BD428F28DE366A009975E5 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */; };
 		67F856D828D1A96E00C66426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856D728D1A96E00C66426 /* AppDelegate.swift */; };
 		67F856DA28D1A96E00C66426 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856D928D1A96E00C66426 /* SceneDelegate.swift */; };
 		67F856DC28D1A96E00C66426 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856DB28D1A96E00C66426 /* MainViewController.swift */; };
@@ -36,6 +37,7 @@
 		679AB2C728D2509F005E8B94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		679AB2C928D25327005E8B94 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		679AB2CB28D27254005E8B94 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		67F856D428D1A96E00C66426 /* Vocabulometer-OSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vocabulometer-OSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F856D728D1A96E00C66426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67F856D928D1A96E00C66426 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				67F856DB28D1A96E00C66426 /* MainViewController.swift */,
 				679AB2CB28D27254005E8B94 /* Authentication.swift */,
 				679AB2C228D24E68005E8B94 /* SignInViewController.swift */,
+				67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */,
 				679AB2C928D25327005E8B94 /* SignUpViewController.swift */,
 				679AB2C628D24F95005E8B94 /* Authentication.storyboard */,
 				67F856DD28D1A96E00C66426 /* Main.storyboard */,
@@ -194,6 +197,7 @@
 				679AB2CA28D25327005E8B94 /* SignUpViewController.swift in Sources */,
 				67F856D828D1A96E00C66426 /* AppDelegate.swift in Sources */,
 				67F856DA28D1A96E00C66426 /* SceneDelegate.swift in Sources */,
+				67BD428F28DE366A009975E5 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
