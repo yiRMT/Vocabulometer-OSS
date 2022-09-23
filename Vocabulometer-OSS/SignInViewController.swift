@@ -9,6 +9,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
     let auth = Authentication()
+    let okAlertAction = UIAlertAction(title: "OK", style: .default)
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
@@ -47,19 +48,34 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func tapForgotPasswordButton(_ sender: Any) {
-        
+        Task {
+            do {
+                try await auth.sendPasswordReset(withEmail: emailTextField.text ?? "")
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Reset Password", message: "We have sent you a mail to \(self.emailTextField.text!).", actions: [self.okAlertAction])
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Alert", message: error.localizedDescription, actions: [self.okAlertAction])
+                }
+            }
+        }
     }
     
     @IBAction func tapSignInButton(_ sender: Any) {
         Task {
             do {
                 try await auth.signIn(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+                
+                // Transition to MainView
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! MainViewController
                 vc.modalPresentationStyle = .fullScreen
                 vc.modalTransitionStyle = .crossDissolve
                 present(vc, animated: true)
             } catch {
-                
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Alert", message: error.localizedDescription, actions: [self.okAlertAction])
+                }
             }
         }
     }

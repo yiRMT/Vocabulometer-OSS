@@ -23,19 +23,42 @@ class Authentication {
     
     func signIn(withEmail email: String, password: String) async throws {
         do {
-            try await Auth.auth().signIn(withEmail: email, password: password)
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
         } catch {
             print(error.localizedDescription)
             throw error
         }
     }
     
-    func signUp(withEmail email: String, password: String) async throws {
+    func signUp(withEmail email: String, password: String, repassword: String) async throws {
         do {
-            try await Auth.auth().createUser(withEmail: email, password: password)
+            if password != repassword {
+                throw AuthenticationError.invalidPasswordConfirmation
+            } else {
+                try await Auth.auth().createUser(withEmail: email, password: password)
+            }
         } catch {
             print(error.localizedDescription)
             throw error
+        }
+    }
+    
+    func sendPasswordReset(withEmail email: String) async throws {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+        } catch {
+            print(error.localizedDescription)
+            throw error
+        }
+    }
+}
+
+enum AuthenticationError: Error, LocalizedError {
+    case invalidPasswordConfirmation
+    var errorDescription: String? {
+        switch self {
+        case .invalidPasswordConfirmation:
+            return "The password and the confirm password do not match."
         }
     }
 }

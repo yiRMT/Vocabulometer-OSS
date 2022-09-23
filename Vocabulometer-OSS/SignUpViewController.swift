@@ -9,6 +9,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     let auth = Authentication()
+    let okAlertAction = UIAlertAction(title: "OK", style: .default)
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
@@ -58,11 +59,20 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func tapSignUpButton(_ sender: Any) {
+        let successAlertAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         Task {
             do {
-                try await auth.signUp(withEmail: emailTextField.text ?? "", password: newPasswordTextField.text ?? "")
+                try await auth.signUp(withEmail: emailTextField.text ?? "", password: newPasswordTextField.text ?? "", repassword: confirmPasswordTextField.text ?? "")
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Your account has been created!", message: "We have created your account. Please sign in to continue.", actions: [successAlertAction])
+                }
             } catch {
-                
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Alert", message: error.localizedDescription, actions: [self.okAlertAction])
+                }
             }
         }
     }
