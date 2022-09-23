@@ -63,6 +63,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
                                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="tapForgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bK4-fH-TuJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krs-HD-cKc">
                                                 <rect key="frame" x="20" y="400.66666666666669" width="350" height="34.333333333333314"/>
@@ -130,6 +133,7 @@
                     <navigationItem key="navigationItem" title="Title" id="SPP-nU-zv8"/>
                     <connections>
                         <outlet property="emailTextField" destination="ASu-oe-13S" id="7pY-8E-StS"/>
+                        <outlet property="logoImageView" destination="k2n-Xg-HSC" id="XLF-zH-PKM"/>
                         <outlet property="passwordTextField" destination="qYp-qu-f7t" id="m47-I3-Qqz"/>
                         <outlet property="passwordVisibilityButton" destination="gtF-WW-HVU" id="ETs-sW-c96"/>
                     </connections>
@@ -258,6 +262,7 @@
                         <outlet property="confirmPasswordTextField" destination="gpy-F5-wdQ" id="EmN-xd-f1m"/>
                         <outlet property="confirmPasswordVisibilityButton" destination="mS8-VG-hip" id="yP7-8c-x8K"/>
                         <outlet property="emailTextField" destination="X73-Vm-35s" id="cHQ-z9-0Gm"/>
+                        <outlet property="logoImageView" destination="kFE-nZ-LOf" id="gc4-pT-0FU"/>
                         <outlet property="newPasswordTextField" destination="6B2-r6-zwc" id="Ful-sN-7zQ"/>
                         <outlet property="newPasswordVisibilityButton" destination="C6Y-ls-dcW" id="X1j-86-Bvy"/>
                     </connections>

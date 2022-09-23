@@ -10,6 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController {
     let auth = Authentication()
     
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -21,7 +22,7 @@ class SignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         navigationItem.title = title
-        
+        logoImageView.image = UIImage(named: "Splash")
         initEmailTextField()
         initNewPasswordField()
         initConfirmPasswordField()
