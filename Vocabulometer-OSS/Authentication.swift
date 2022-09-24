@@ -11,21 +11,21 @@ import FirebaseAuth
 class Authentication {
     let firebaseAuth = Auth.auth()
     
-    func signOut() -> Error? {
+    func signOut() throws {
         do {
             try firebaseAuth.signOut()
+            UserDefaults.standard.set(false, forKey: "status")
+            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
         } catch {
             print(error.localizedDescription)
-            return error
+            throw error
         }
-        return nil
     }
     
     func signIn(withEmail email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
         } catch {
-            print(error.localizedDescription)
             throw error
         }
     }
@@ -38,7 +38,6 @@ class Authentication {
                 try await Auth.auth().createUser(withEmail: email, password: password)
             }
         } catch {
-            print(error.localizedDescription)
             throw error
         }
     }
@@ -47,18 +46,28 @@ class Authentication {
         do {
             try await Auth.auth().sendPasswordReset(withEmail: email)
         } catch {
-            print(error.localizedDescription)
             throw error
+        }
+    }
+    
+    func checkAuthState() throws -> String {
+        if let user = firebaseAuth.currentUser {
+            return user.uid
+        } else {
+            throw AuthenticationError.noUserIsSignedIn
         }
     }
 }
 
 enum AuthenticationError: Error, LocalizedError {
     case invalidPasswordConfirmation
+    case noUserIsSignedIn
     var errorDescription: String? {
         switch self {
         case .invalidPasswordConfirmation:
             return "The password and the confirm password do not match."
+        case .noUserIsSignedIn:
+            return "No user is signed in."
         }
     }
 }

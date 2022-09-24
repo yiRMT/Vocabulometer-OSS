@@ -16,7 +16,15 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func tapSignOutButton(_ sender: Any) {
-        auth.signOut()
+        do {
+            try auth.signOut()
+            let viewController = UIStoryboard(name: "Authentication", bundle: nil).instantiateViewController(withIdentifier: "AuthenticationNavigationController")
+            viewController.modalPresentationStyle = .fullScreen
+            viewController.modalTransitionStyle = .crossDissolve
+            self.present(viewController, animated: true)
+        } catch {
+            print(error.localizedDescription)
+        }
     }    
 }
 
