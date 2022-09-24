@@ -9,6 +9,8 @@ import UIKit
 
 class SignInViewController: UIViewController {
     let auth = Authentication()
+    let database = DatabaseManager()
+    var activityIndicatorView = UIActivityIndicatorView()
     let okAlertAction = UIAlertAction(title: "OK", style: .default)
     
     @IBOutlet weak var logoImageView: UIImageView!
@@ -22,6 +24,7 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationItem.title = title
         logoImageView.image = UIImage(named: "Splash")
+        initActivityIndicator()
         initEmailTextField()
         initPasswordField()
     }
@@ -66,18 +69,37 @@ class SignInViewController: UIViewController {
         Task {
             do {
                 try await auth.signIn(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "")
-                
-                // Transition to MainView
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! MainViewController
-                vc.modalPresentationStyle = .fullScreen
-                vc.modalTransitionStyle = .crossDissolve
-                present(vc, animated: true)
+                activityIndicatorView.startAnimating()
+                view.isUserInteractionEnabled = false
+                let isStored = await database.checkUserDataStored()
+                activityIndicatorView.stopAnimating()
+                view.isUserInteractionEnabled = true
+                if isStored {
+                    // Transition to MainView
+                    let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! MainViewController
+                    viewController.modalPresentationStyle = .fullScreen
+                    viewController.modalTransitionStyle = .crossDissolve
+                    present(viewController, animated: true)
+                } else {
+                    // Transition to MainView
+                    let viewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "UserInfo") as! UserInfoViewController
+                    navigationController?.pushViewController(viewController, animated: true)
+                }
             } catch {
+                activityIndicatorView.stopAnimating()
+                view.isUserInteractionEnabled = true
                 DispatchQueue.main.async {
                     self.showAlert(title: "Alert", message: error.localizedDescription, actions: [self.okAlertAction])
                 }
             }
         }
+    }
+    
+    func initActivityIndicator() {
+        activityIndicatorView.center = view.center
+        activityIndicatorView.style = .large
+        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
     }
     
     func initEmailTextField() {
