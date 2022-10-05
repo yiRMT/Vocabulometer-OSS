@@ -9,15 +9,28 @@
 /* Begin PBXBuildFile section */
 		6771BBAC28D388CD00D74F10 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6771BBAB28D388CD00D74F10 /* Home.storyboard */; };
 		6771BBAE28D389B500D74F10 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6771BBAD28D389B500D74F10 /* Browse.storyboard */; };
+		677E70DC28DF801F003AFBCD /* SDQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677E70DB28DF801F003AFBCD /* SDQAViewController.swift */; };
+		677E70E228DF853A003AFBCD /* Lemma.json in Resources */ = {isa = PBXBuildFile; fileRef = 677E70DE28DF8539003AFBCD /* Lemma.json */; };
+		677E70E328DF853A003AFBCD /* WordFrequency.json in Resources */ = {isa = PBXBuildFile; fileRef = 677E70DF28DF853A003AFBCD /* WordFrequency.json */; };
+		677E70E428DF853A003AFBCD /* WordFrequencyKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 677E70E028DF853A003AFBCD /* WordFrequencyKey.json */; };
+		677E70E528DF853A003AFBCD /* Namelist.json in Resources */ = {isa = PBXBuildFile; fileRef = 677E70E128DF853A003AFBCD /* Namelist.json */; };
+		677E70E728DF89B6003AFBCD /* ContentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677E70E628DF89B6003AFBCD /* ContentsManager.swift */; };
+		677E70E928DF89EB003AFBCD /* OriginalAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677E70E828DF89EB003AFBCD /* OriginalAPIManager.swift */; };
 		6789A96A28DE46B00042478C /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6789A96928DE46B00042478C /* Setup.storyboard */; };
 		6789A96C28DE477F0042478C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789A96B28DE477F0042478C /* UserInfoViewController.swift */; };
 		6789A96E28DE4A4B0042478C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789A96D28DE4A4B0042478C /* DatabaseManager.swift */; };
+		6789A97428DF050A0042478C /* SDQAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789A97328DF050A0042478C /* SDQAManager.swift */; };
+		6789A97628DF15490042478C /* SanDiegoQuickAsessment.json in Resources */ = {isa = PBXBuildFile; fileRef = 6789A97528DF15490042478C /* SanDiegoQuickAsessment.json */; };
+		6789A97828DF1BE40042478C /* WordListGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789A97728DF1BE40042478C /* WordListGenerator.swift */; };
+		6789A97B28DF1CAA0042478C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 6789A97A28DF1CAA0042478C /* SwiftyJSON */; };
 		679AB2C328D24E68005E8B94 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AB2C228D24E68005E8B94 /* SignInViewController.swift */; };
 		679AB2C428D24F95005E8B94 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 679AB2C628D24F95005E8B94 /* Authentication.storyboard */; };
 		679AB2C828D2509F005E8B94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 679AB2C728D2509F005E8B94 /* GoogleService-Info.plist */; };
 		679AB2CA28D25327005E8B94 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AB2C928D25327005E8B94 /* SignUpViewController.swift */; };
 		679AB2CC28D27254005E8B94 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AB2CB28D27254005E8B94 /* Authentication.swift */; };
 		67BD428F28DE366A009975E5 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */; };
+		67F2386328ECA24F00F5147A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F2386228ECA24F00F5147A /* MainTabBarController.swift */; };
+		67F2386528ECA2E800F5147A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F2386428ECA2E800F5147A /* HomeViewController.swift */; };
 		67F856D828D1A96E00C66426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856D728D1A96E00C66426 /* AppDelegate.swift */; };
 		67F856DA28D1A96E00C66426 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856D928D1A96E00C66426 /* SceneDelegate.swift */; };
 		67F856DC28D1A96E00C66426 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856DB28D1A96E00C66426 /* MainViewController.swift */; };
@@ -35,15 +48,27 @@
 /* Begin PBXFileReference section */
 		6771BBAB28D388CD00D74F10 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6771BBAD28D389B500D74F10 /* Browse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
+		677E70DB28DF801F003AFBCD /* SDQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDQAViewController.swift; sourceTree = "<group>"; };
+		677E70DE28DF8539003AFBCD /* Lemma.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lemma.json; sourceTree = "<group>"; };
+		677E70DF28DF853A003AFBCD /* WordFrequency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WordFrequency.json; sourceTree = "<group>"; };
+		677E70E028DF853A003AFBCD /* WordFrequencyKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WordFrequencyKey.json; sourceTree = "<group>"; };
+		677E70E128DF853A003AFBCD /* Namelist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Namelist.json; sourceTree = "<group>"; };
+		677E70E628DF89B6003AFBCD /* ContentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsManager.swift; sourceTree = "<group>"; };
+		677E70E828DF89EB003AFBCD /* OriginalAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalAPIManager.swift; sourceTree = "<group>"; };
 		6789A96928DE46B00042478C /* Setup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
 		6789A96B28DE477F0042478C /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		6789A96D28DE4A4B0042478C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		6789A97328DF050A0042478C /* SDQAManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDQAManager.swift; sourceTree = "<group>"; };
+		6789A97528DF15490042478C /* SanDiegoQuickAsessment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SanDiegoQuickAsessment.json; sourceTree = "<group>"; };
+		6789A97728DF1BE40042478C /* WordListGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListGenerator.swift; sourceTree = "<group>"; };
 		679AB2C228D24E68005E8B94 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		679AB2C528D24F95005E8B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentication.storyboard; sourceTree = "<group>"; };
 		679AB2C728D2509F005E8B94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		679AB2C928D25327005E8B94 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		679AB2CB28D27254005E8B94 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		67F2386228ECA24F00F5147A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		67F2386428ECA2E800F5147A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		67F856D428D1A96E00C66426 /* Vocabulometer-OSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vocabulometer-OSS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F856D728D1A96E00C66426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67F856D928D1A96E00C66426 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +89,7 @@
 				67F856F128D1AE2700C66426 /* FirebaseAnalytics in Frameworks */,
 				67F856F728D1AE2700C66426 /* FirebaseStorage in Frameworks */,
 				67F856F328D1AE2700C66426 /* FirebaseAuth in Frameworks */,
+				6789A97B28DF1CAA0042478C /* SwiftyJSON in Frameworks */,
 				67F856F528D1AE2700C66426 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,18 +120,30 @@
 			children = (
 				67F856D728D1A96E00C66426 /* AppDelegate.swift */,
 				67F856D928D1A96E00C66426 /* SceneDelegate.swift */,
-				67F856DB28D1A96E00C66426 /* MainViewController.swift */,
+				67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */,
 				679AB2CB28D27254005E8B94 /* Authentication.swift */,
 				6789A96D28DE4A4B0042478C /* DatabaseManager.swift */,
-				679AB2C228D24E68005E8B94 /* SignInViewController.swift */,
-				67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */,
-				679AB2C928D25327005E8B94 /* SignUpViewController.swift */,
-				6789A96B28DE477F0042478C /* UserInfoViewController.swift */,
+				6789A97328DF050A0042478C /* SDQAManager.swift */,
+				6789A97728DF1BE40042478C /* WordListGenerator.swift */,
+				677E70E628DF89B6003AFBCD /* ContentsManager.swift */,
+				677E70E828DF89EB003AFBCD /* OriginalAPIManager.swift */,
 				679AB2C628D24F95005E8B94 /* Authentication.storyboard */,
 				6789A96928DE46B00042478C /* Setup.storyboard */,
 				67F856DD28D1A96E00C66426 /* Main.storyboard */,
+				67F2386228ECA24F00F5147A /* MainTabBarController.swift */,
 				6771BBAB28D388CD00D74F10 /* Home.storyboard */,
+				67F2386428ECA2E800F5147A /* HomeViewController.swift */,
 				6771BBAD28D389B500D74F10 /* Browse.storyboard */,
+				67F856DB28D1A96E00C66426 /* MainViewController.swift */,
+				679AB2C228D24E68005E8B94 /* SignInViewController.swift */,
+				677E70DB28DF801F003AFBCD /* SDQAViewController.swift */,
+				679AB2C928D25327005E8B94 /* SignUpViewController.swift */,
+				6789A96B28DE477F0042478C /* UserInfoViewController.swift */,
+				6789A97528DF15490042478C /* SanDiegoQuickAsessment.json */,
+				677E70DE28DF8539003AFBCD /* Lemma.json */,
+				677E70E128DF853A003AFBCD /* Namelist.json */,
+				677E70DF28DF853A003AFBCD /* WordFrequency.json */,
+				677E70E028DF853A003AFBCD /* WordFrequencyKey.json */,
 				67F856E028D1A96F00C66426 /* Assets.xcassets */,
 				67F856E228D1A96F00C66426 /* LaunchScreen.storyboard */,
 				67F856E528D1A96F00C66426 /* Info.plist */,
@@ -135,6 +173,7 @@
 				67F856F228D1AE2700C66426 /* FirebaseAuth */,
 				67F856F428D1AE2700C66426 /* FirebaseFirestore */,
 				67F856F628D1AE2700C66426 /* FirebaseStorage */,
+				6789A97A28DF1CAA0042478C /* SwiftyJSON */,
 			);
 			productName = "Vocabulometer-OSS";
 			productReference = 67F856D428D1A96E00C66426 /* Vocabulometer-OSS.app */;
@@ -166,6 +205,7 @@
 			mainGroup = 67F856CB28D1A96E00C66426;
 			packageReferences = (
 				67F856EF28D1AE2700C66426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6789A97928DF1CAA0042478C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 67F856D528D1A96E00C66426 /* Products */;
 			projectDirPath = "";
@@ -183,13 +223,18 @@
 			files = (
 				6789A96A28DE46B00042478C /* Setup.storyboard in Resources */,
 				6771BBAE28D389B500D74F10 /* Browse.storyboard in Resources */,
+				677E70E528DF853A003AFBCD /* Namelist.json in Resources */,
 				679AB2C428D24F95005E8B94 /* Authentication.storyboard in Resources */,
+				677E70E328DF853A003AFBCD /* WordFrequency.json in Resources */,
 				67F856E428D1A96F00C66426 /* LaunchScreen.storyboard in Resources */,
 				67F856E128D1A96F00C66426 /* Assets.xcassets in Resources */,
+				6789A97628DF15490042478C /* SanDiegoQuickAsessment.json in Resources */,
+				677E70E228DF853A003AFBCD /* Lemma.json in Resources */,
 				67F856EC28D1A9F600C66426 /* README.md in Resources */,
 				67F856DF28D1A96E00C66426 /* Main.storyboard in Resources */,
 				679AB2C828D2509F005E8B94 /* GoogleService-Info.plist in Resources */,
 				67F856EE28D1AA0300C66426 /* LICENSE in Resources */,
+				677E70E428DF853A003AFBCD /* WordFrequencyKey.json in Resources */,
 				6771BBAC28D388CD00D74F10 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,13 +248,20 @@
 			files = (
 				679AB2CC28D27254005E8B94 /* Authentication.swift in Sources */,
 				6789A96C28DE477F0042478C /* UserInfoViewController.swift in Sources */,
+				67F2386328ECA24F00F5147A /* MainTabBarController.swift in Sources */,
 				679AB2C328D24E68005E8B94 /* SignInViewController.swift in Sources */,
 				67F856DC28D1A96E00C66426 /* MainViewController.swift in Sources */,
+				6789A97428DF050A0042478C /* SDQAManager.swift in Sources */,
+				6789A97828DF1BE40042478C /* WordListGenerator.swift in Sources */,
+				677E70DC28DF801F003AFBCD /* SDQAViewController.swift in Sources */,
 				679AB2CA28D25327005E8B94 /* SignUpViewController.swift in Sources */,
 				67F856D828D1A96E00C66426 /* AppDelegate.swift in Sources */,
 				6789A96E28DE4A4B0042478C /* DatabaseManager.swift in Sources */,
+				67F2386528ECA2E800F5147A /* HomeViewController.swift in Sources */,
 				67F856DA28D1A96E00C66426 /* SceneDelegate.swift in Sources */,
 				67BD428F28DE366A009975E5 /* UIViewController+Alert.swift in Sources */,
+				677E70E728DF89B6003AFBCD /* ContentsManager.swift in Sources */,
+				677E70E928DF89EB003AFBCD /* OriginalAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +493,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6789A97928DF1CAA0042478C /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		67F856EF28D1AE2700C66426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -452,6 +512,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6789A97A28DF1CAA0042478C /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6789A97928DF1CAA0042478C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		67F856F028D1AE2700C66426 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67F856EF28D1AE2700C66426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

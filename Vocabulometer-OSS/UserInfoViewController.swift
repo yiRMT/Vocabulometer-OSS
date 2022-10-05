@@ -22,9 +22,11 @@ class UserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ageTextField.delegate = self
+        
         /// 初期設定画面の時の設定
         if !isHomeView {
-            self.navigationItem.hidesBackButton = true
+            navigationItem.hidesBackButton = true
         }
         
         /// Home Viewの時の設定
@@ -36,28 +38,28 @@ class UserInfoViewController: UIViewController {
                     let userInfo = try await database.getUserInfoData()
                     ageTextField.text = String(userInfo.age)
                     switch userInfo.nativeLanguage {
-                    case "Japanese":
-                        selectedNativeLanguageType = .japanese
-                    case "French":
-                        selectedNativeLanguageType = .french
-                    case "German":
-                        selectedNativeLanguageType = .german
-                    case "Other":
-                        selectedNativeLanguageType = .other
-                    default:
-                        selectedNativeLanguageType = .japanese
+                        case "Japanese":
+                            selectedNativeLanguageType = .japanese
+                        case "French":
+                            selectedNativeLanguageType = .french
+                        case "German":
+                            selectedNativeLanguageType = .german
+                        case "Other":
+                            selectedNativeLanguageType = .other
+                        default:
+                            selectedNativeLanguageType = .japanese
                     }
                     switch userInfo.gender {
-                    case "Male":
-                        selectedGenderType = .male
-                    case "Female":
-                        selectedGenderType = .female
-                    case "Custom":
-                        selectedGenderType = .custom
-                    case "Rather not say":
-                        selectedGenderType = .ratherNotSay
-                    default:
-                        selectedGenderType = .male
+                        case "Male":
+                            selectedGenderType = .male
+                        case "Female":
+                            selectedGenderType = .female
+                        case "Custom":
+                            selectedGenderType = .custom
+                        case "Rather not say":
+                            selectedGenderType = .ratherNotSay
+                        default:
+                            selectedGenderType = .male
                     }
                     
                     configureNativeLanguageMenu()
@@ -189,7 +191,7 @@ class UserInfoViewController: UIViewController {
             
             /// 初期設定かHomeViewかで画面遷移を変える
             if isHomeView {
-                self.navigationController?.popViewController(animated: true)
+                navigationController?.popViewController(animated: true)
             } else {
                 let storyboard: UIStoryboard = self.storyboard!
                 let viewController = storyboard.instantiateViewController(withIdentifier: "SDQAStoryboard")
@@ -198,6 +200,13 @@ class UserInfoViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+extension UserInfoViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

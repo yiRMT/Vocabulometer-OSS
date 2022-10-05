@@ -71,20 +71,23 @@ class SignInViewController: UIViewController {
                 try await auth.signIn(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "")
                 activityIndicatorView.startAnimating()
                 view.isUserInteractionEnabled = false
-                let isStored = await database.checkUserDataStored()
+                try await database.checkUserDataStored()
                 activityIndicatorView.stopAnimating()
                 view.isUserInteractionEnabled = true
-                if isStored {
-                    // Transition to MainView
-                    let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! MainViewController
-                    viewController.modalPresentationStyle = .fullScreen
-                    viewController.modalTransitionStyle = .crossDissolve
-                    present(viewController, animated: true)
-                } else {
-                    // Transition to MainView
-                    let viewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "UserInfo") as! UserInfoViewController
-                    navigationController?.pushViewController(viewController, animated: true)
-                }
+                
+                // Transition to MainView
+                let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainNavigationController")
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.modalTransitionStyle = .crossDissolve
+                present(viewController, animated: true)
+            } catch DatabaseError.userDataNotStored {
+                // Transition to UserInfo input view
+                let viewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "UserInfo") as! UserInfoViewController
+                navigationController?.pushViewController(viewController, animated: true)
+            } catch DatabaseError.userWordlistNotStored {
+                // Transition to UserInfo input view
+                let viewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "SDQAStoryboard") as! SDQAViewController
+                navigationController?.pushViewController(viewController, animated: true)
             } catch {
                 activityIndicatorView.stopAnimating()
                 view.isUserInteractionEnabled = true

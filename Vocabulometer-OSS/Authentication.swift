@@ -24,7 +24,7 @@ class Authentication {
     
     func signIn(withEmail email: String, password: String) async throws {
         do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            try await Auth.auth().signIn(withEmail: email, password: password)
         } catch {
             throw error
         }

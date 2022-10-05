@@ -7,23 +7,32 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseStorage
 
 class DatabaseManager {
     let auth = Authentication()
     let firestore = Firestore.firestore()
     let userDataCollection = "users"
     
-    func checkUserDataStored() async -> Bool {
+    func checkUserDataStored() async throws {
         do {
             let uid = try auth.checkAuthState()
             let docRef = firestore.collection(userDataCollection).document(uid)
             let document = try await docRef.getDocument()
+            let data = document.data()
             if document.exists {
-                return true
+                if let state = data?["wordList"] as? Bool {
+                    if state {
+                        return
+                    } else {
+                        throw DatabaseError.userWordlistNotStored
+                    }
+                }
+            } else {
+                throw DatabaseError.userDataNotStored
             }
-            return false
         } catch {
-            return false
+            throw error
         }
     }
     
@@ -70,11 +79,38 @@ class DatabaseManager {
                 "skill": userInfoData.skill
             ]
         ]
+        let wordListField = [
+            "wordList": false
+        ]
         
         do {
             let uid = try auth.checkAuthState()
             let docRef = firestore.collection(userDataCollection).document(uid)
             docRef.setData(userDataField, merge: true)
+            docRef.setData(wordListField, merge: true)
+        } catch {
+            throw error
+        }
+    }
+    
+    func updateDataOf(_ skill: Int) throws {
+        do {
+            let uid = try auth.checkAuthState()
+            firestore.collection(userDataCollection).document(uid).updateData(["userinfo.skill": skill])
+        } catch {
+            throw error
+        }
+    }
+    
+    func setWordListState() throws {
+        let data = [
+            "wordList": true
+        ]
+        
+        do {
+            let uid = try auth.checkAuthState()
+            let docRef = firestore.collection(userDataCollection).document(uid)
+            docRef.setData(data, merge: true)
         } catch {
             throw error
         }
@@ -83,10 +119,13 @@ class DatabaseManager {
 
 enum DatabaseError: Error, LocalizedError {
     case userDataNotStored
+    case userWordlistNotStored
     var errorDescription: String? {
         switch self {
         case .userDataNotStored:
             return "User data is not stored in Firestore."
+        case .userWordlistNotStored:
+            return "Wordlist is not stored in Firebase Storage."
         }
     }
 }
