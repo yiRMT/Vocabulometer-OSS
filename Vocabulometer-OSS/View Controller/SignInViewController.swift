@@ -8,7 +8,7 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-    let auth = Authentication()
+    let auth = AuthenticationManager()
     let database = DatabaseManager()
     var activityIndicatorView = UIActivityIndicatorView()
     let okAlertAction = UIAlertAction(title: "OK", style: .default)
