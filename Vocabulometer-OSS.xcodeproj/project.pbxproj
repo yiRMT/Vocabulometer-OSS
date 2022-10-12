@@ -99,6 +99,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		672154A528F67D51007BF3F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				679AB2CB28D27254005E8B94 /* Authentication.swift */,
+				6789A96D28DE4A4B0042478C /* DatabaseManager.swift */,
+				6789A97328DF050A0042478C /* SDQAManager.swift */,
+				6789A97728DF1BE40042478C /* WordListGenerator.swift */,
+				677E70E628DF89B6003AFBCD /* ContentsManager.swift */,
+				677E70E828DF89EB003AFBCD /* OriginalAPIManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		672154A628F67D67007BF3F7 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				679AB2C228D24E68005E8B94 /* SignInViewController.swift */,
+				679AB2C928D25327005E8B94 /* SignUpViewController.swift */,
+				6789A96B28DE477F0042478C /* UserInfoViewController.swift */,
+				677E70DB28DF801F003AFBCD /* SDQAViewController.swift */,
+				67F2386228ECA24F00F5147A /* MainTabBarController.swift */,
+				67F2386428ECA2E800F5147A /* HomeViewController.swift */,
+				67F856DB28D1A96E00C66426 /* MainViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		672154A728F67D7C007BF3F7 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				6789A97528DF15490042478C /* SanDiegoQuickAsessment.json */,
+				677E70DE28DF8539003AFBCD /* Lemma.json */,
+				677E70E128DF853A003AFBCD /* Namelist.json */,
+				677E70DF28DF853A003AFBCD /* WordFrequency.json */,
+				677E70E028DF853A003AFBCD /* WordFrequencyKey.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		672154A828F67DD6007BF3F7 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				679AB2C628D24F95005E8B94 /* Authentication.storyboard */,
+				6789A96928DE46B00042478C /* Setup.storyboard */,
+				67F856DD28D1A96E00C66426 /* Main.storyboard */,
+				6771BBAB28D388CD00D74F10 /* Home.storyboard */,
+				6771BBAD28D389B500D74F10 /* Browse.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		672154A928F67ECA007BF3F7 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
 		67F856CB28D1A96E00C66426 = {
 			isa = PBXGroup;
 			children = (
@@ -122,30 +181,11 @@
 			children = (
 				67F856D728D1A96E00C66426 /* AppDelegate.swift */,
 				67F856D928D1A96E00C66426 /* SceneDelegate.swift */,
-				67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */,
-				679AB2CB28D27254005E8B94 /* Authentication.swift */,
-				6789A96D28DE4A4B0042478C /* DatabaseManager.swift */,
-				6789A97328DF050A0042478C /* SDQAManager.swift */,
-				6789A97728DF1BE40042478C /* WordListGenerator.swift */,
-				677E70E628DF89B6003AFBCD /* ContentsManager.swift */,
-				677E70E828DF89EB003AFBCD /* OriginalAPIManager.swift */,
-				679AB2C628D24F95005E8B94 /* Authentication.storyboard */,
-				6789A96928DE46B00042478C /* Setup.storyboard */,
-				67F856DD28D1A96E00C66426 /* Main.storyboard */,
-				67F2386228ECA24F00F5147A /* MainTabBarController.swift */,
-				6771BBAB28D388CD00D74F10 /* Home.storyboard */,
-				67F2386428ECA2E800F5147A /* HomeViewController.swift */,
-				6771BBAD28D389B500D74F10 /* Browse.storyboard */,
-				67F856DB28D1A96E00C66426 /* MainViewController.swift */,
-				679AB2C228D24E68005E8B94 /* SignInViewController.swift */,
-				677E70DB28DF801F003AFBCD /* SDQAViewController.swift */,
-				679AB2C928D25327005E8B94 /* SignUpViewController.swift */,
-				6789A96B28DE477F0042478C /* UserInfoViewController.swift */,
-				6789A97528DF15490042478C /* SanDiegoQuickAsessment.json */,
-				677E70DE28DF8539003AFBCD /* Lemma.json */,
-				677E70E128DF853A003AFBCD /* Namelist.json */,
-				677E70DF28DF853A003AFBCD /* WordFrequency.json */,
-				677E70E028DF853A003AFBCD /* WordFrequencyKey.json */,
+				672154A928F67ECA007BF3F7 /* Extention */,
+				672154A528F67D51007BF3F7 /* Model */,
+				672154A828F67DD6007BF3F7 /* Storyboard */,
+				672154A628F67D67007BF3F7 /* View Controller */,
+				672154A728F67D7C007BF3F7 /* JSON */,
 				67F856E028D1A96F00C66426 /* Assets.xcassets */,
 				67F856E228D1A96F00C66426 /* LaunchScreen.storyboard */,
 				67F856E528D1A96F00C66426 /* Info.plist */,
