@@ -8,6 +8,8 @@
 import Foundation
 
 class ContentsManager {
+    let auth = AuthenticationManager()
+    let database = DatabaseManager()
     func parseNameList() -> [String] {
         let filePath = Bundle.main.path(forResource: "Namelist", ofType: "json")!
         let file = FileHandle(forReadingAtPath: filePath)
@@ -64,4 +66,5 @@ class ContentsManager {
 struct Sentence {
     var english: String
     var japanese: String
+    var startTime: Double
 }
