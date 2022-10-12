@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    let auth = Authentication()
+    let auth = AuthenticationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()

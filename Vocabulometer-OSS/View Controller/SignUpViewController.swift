@@ -8,7 +8,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    let auth = Authentication()
+    let auth = AuthenticationManager()
     let okAlertAction = UIAlertAction(title: "OK", style: .default)
     
     @IBOutlet weak var logoImageView: UIImageView!

@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-class Authentication {
+class AuthenticationManager {
     let auth = Auth.auth()
     
     func signIn(withEmail email: String, password: String) async throws {

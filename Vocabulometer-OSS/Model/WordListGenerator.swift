@@ -15,7 +15,7 @@ import NaturalLanguage
 class WordListGenerator {
     let firestoreCollection = DatabaseManager().userDataCollection
     let originalAPIManager = OriginalAPIManager()
-    let auth = Authentication()
+    let auth = AuthenticationManager()
     let database = DatabaseManager()
     let storage = Storage.storage()
     

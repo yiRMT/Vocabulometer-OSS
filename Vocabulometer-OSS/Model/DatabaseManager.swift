@@ -10,9 +10,11 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class DatabaseManager {
-    let auth = Authentication()
-    let firestore = Firestore.firestore()
+    private let auth = AuthenticationManager()
+    private let firestore = Firestore.firestore()
+    
     let userDataCollection = "users"
+    var isUserDataStored = false
     
     // MARK: User info
     
@@ -28,11 +30,11 @@ class DatabaseManager {
                     if state {
                         return
                     } else {
-                        throw DatabaseError.userWordlistNotStored
+                        throw UserInfoError.userWordlistNotStored
                     }
                 }
             } else {
-                throw DatabaseError.userDataNotStored
+                throw UserInfoError.userDataNotStored
             }
         } catch {
             throw error
@@ -75,31 +77,41 @@ class DatabaseManager {
     
     /// Initialize user info
     /// - Parameter userInfoData: a stuct which contains user's age, native language, etc...
-    func storeUserInfo(of userInfoData: UserInfo) throws {
+    func storeUserInfo(of userInfoData: UserInfo, isHomeView: Bool) throws {
         let userDataField = [
             "userinfo": [
+                //"participant": self.participantID,
                 "age": userInfoData.age,
                 "native": userInfoData.nativeLanguage,
                 "gender": userInfoData.gender,
+                //"economy": self.economy,
+                //"entertainment": self.entertainment,
+                //"environment": self.environment,
+                //"lifestyle": self.lifestyle,
+                //"politics": self.politics,
+                //"science": self.science,
+                //"sport": self.sport,
                 "skill": userInfoData.skill
-            ]
-        ]
+            ],
+            "wordList": isHomeView
+        ] as [String : Any]
         
-        // Whether word list is stored in Firebase Storage
-        let wordListField = [
-            "wordList": false
+        let videoDataField: [String : Any] = [
+            "data": []
         ]
         
         do {
             let uid = try auth.checkAuthState()
-            let docRef = firestore.collection(userDataCollection).document(uid)
-            docRef.setData(userDataField, merge: true)
-            docRef.setData(wordListField, merge: true)
+            let userDocRef = firestore.collection(userDataCollection).document(uid)
+            userDocRef.setData(userDataField, merge: true)
+            if !isHomeView {
+                let videoDocRef = firestore.collection(userDataCollection).document(uid).collection("download").document("videos")
+                videoDocRef.setData(videoDataField, merge: true)
+            }
         } catch {
             throw error
         }
     }
-    
     
     /// Update skill data in user info
     /// - Parameter skill: English skill level
@@ -137,8 +149,8 @@ class DatabaseManager {
         do {
             let uid = try auth.checkAuthState()
             let docRef = firestore.collection(userDataCollection).document(uid)
-            let document = try await docRef.getDocument()
-            let data = document.data()
+            let documentSnapshot = try await docRef.getDocument()
+            let data = documentSnapshot.data()
             if let statsData = data?["stats"] as? [String:Int] {
                 self.statsData = statsData
             }
@@ -151,7 +163,7 @@ class DatabaseManager {
     }
 }
 
-enum DatabaseError: Error, LocalizedError {
+enum UserInfoError: Error, LocalizedError {
     case userDataNotStored
     case userWordlistNotStored
     var errorDescription: String? {
