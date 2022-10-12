@@ -173,6 +173,9 @@
                                             <segment title="New Words Read"/>
                                             <segment title="Total Words Read"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="tapStatsWordsControll:" destination="Y6W-OH-hqX" eventType="valueChanged" id="r5R-04-xek"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <variation key="default">
@@ -201,6 +204,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="KoH-AY-JBg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chartView" destination="p0G-Vp-3Dt" id="UIg-hh-4PR"/>
+                        <outlet property="statsWordsModeControll" destination="aPM-LZ-1zb" id="ROW-DA-TDj"/>
+                        <outlet property="userSkillLabel" destination="l1c-hn-eh3" id="ja7-fU-mrS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

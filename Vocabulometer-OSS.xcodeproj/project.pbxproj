@@ -31,6 +31,7 @@
 		67BD428F28DE366A009975E5 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD428E28DE366A009975E5 /* UIViewController+Alert.swift */; };
 		67F2386328ECA24F00F5147A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F2386228ECA24F00F5147A /* MainTabBarController.swift */; };
 		67F2386528ECA2E800F5147A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F2386428ECA2E800F5147A /* HomeViewController.swift */; };
+		67F2386A28ED561400F5147A /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 67F2386928ED561400F5147A /* Charts */; };
 		67F856D828D1A96E00C66426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856D728D1A96E00C66426 /* AppDelegate.swift */; };
 		67F856DA28D1A96E00C66426 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856D928D1A96E00C66426 /* SceneDelegate.swift */; };
 		67F856DC28D1A96E00C66426 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F856DB28D1A96E00C66426 /* MainViewController.swift */; };
@@ -87,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67F856F128D1AE2700C66426 /* FirebaseAnalytics in Frameworks */,
+				67F2386A28ED561400F5147A /* Charts in Frameworks */,
 				67F856F728D1AE2700C66426 /* FirebaseStorage in Frameworks */,
 				67F856F328D1AE2700C66426 /* FirebaseAuth in Frameworks */,
 				6789A97B28DF1CAA0042478C /* SwiftyJSON in Frameworks */,
@@ -174,6 +176,7 @@
 				67F856F428D1AE2700C66426 /* FirebaseFirestore */,
 				67F856F628D1AE2700C66426 /* FirebaseStorage */,
 				6789A97A28DF1CAA0042478C /* SwiftyJSON */,
+				67F2386928ED561400F5147A /* Charts */,
 			);
 			productName = "Vocabulometer-OSS";
 			productReference = 67F856D428D1A96E00C66426 /* Vocabulometer-OSS.app */;
@@ -206,6 +209,7 @@
 			packageReferences = (
 				67F856EF28D1AE2700C66426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				6789A97928DF1CAA0042478C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				67F2386828ED561400F5147A /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 67F856D528D1A96E00C66426 /* Products */;
 			projectDirPath = "";
@@ -501,6 +505,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		67F2386828ED561400F5147A /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.1.0;
+			};
+		};
 		67F856EF28D1AE2700C66426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -516,6 +528,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6789A97928DF1CAA0042478C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		67F2386928ED561400F5147A /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67F2386828ED561400F5147A /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 		67F856F028D1AE2700C66426 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

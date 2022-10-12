@@ -14,6 +14,9 @@ class DatabaseManager {
     let firestore = Firestore.firestore()
     let userDataCollection = "users"
     
+    // MARK: User info
+    
+    /// Check if user info and word list are stored in Firebase
     func checkUserDataStored() async throws {
         do {
             let uid = try auth.checkAuthState()
@@ -36,6 +39,7 @@ class DatabaseManager {
         }
     }
     
+    /// Get user info from Firestore
     func getUserInfoData() async throws -> UserInfo {
         do {
             let uid = try auth.checkAuthState()
@@ -69,7 +73,8 @@ class DatabaseManager {
         }
     }
     
-    // Set user info
+    /// Initialize user info
+    /// - Parameter userInfoData: a stuct which contains user's age, native language, etc...
     func storeUserInfo(of userInfoData: UserInfo) throws {
         let userDataField = [
             "userinfo": [
@@ -79,6 +84,8 @@ class DatabaseManager {
                 "skill": userInfoData.skill
             ]
         ]
+        
+        // Whether word list is stored in Firebase Storage
         let wordListField = [
             "wordList": false
         ]
@@ -93,6 +100,9 @@ class DatabaseManager {
         }
     }
     
+    
+    /// Update skill data in user info
+    /// - Parameter skill: English skill level
     func updateDataOf(_ skill: Int) throws {
         do {
             let uid = try auth.checkAuthState()
@@ -102,6 +112,7 @@ class DatabaseManager {
         }
     }
     
+    /// Set a flag when word list is generated
     func setWordListState() throws {
         let data = [
             "wordList": true
@@ -111,6 +122,29 @@ class DatabaseManager {
             let uid = try auth.checkAuthState()
             let docRef = firestore.collection(userDataCollection).document(uid)
             docRef.setData(data, merge: true)
+        } catch {
+            throw error
+        }
+    }
+    
+    // MARK: Learning statistics
+    /// How many words have you read? How many words have you gained?
+    
+    var statsData = [String:Int]()
+    var statsNewData = [String:Int]()
+    
+    func getStatsData() async throws {
+        do {
+            let uid = try auth.checkAuthState()
+            let docRef = firestore.collection(userDataCollection).document(uid)
+            let document = try await docRef.getDocument()
+            let data = document.data()
+            if let statsData = data?["stats"] as? [String:Int] {
+                self.statsData = statsData
+            }
+            if let statsNewData = data?["statsNew"] as? [String:Int] {
+                self.statsNewData = statsNewData
+            }
         } catch {
             throw error
         }
