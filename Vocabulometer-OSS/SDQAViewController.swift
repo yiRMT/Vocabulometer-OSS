@@ -97,7 +97,7 @@ class SDQAViewController: UIViewController {
             //userInfo.skill = self.skill
             //userWord.generateWordList()
             //userInfo.update()
-            print("User skill: \(self.skill)")
+            print("User skill: \(skill)")
             /// Update user's English skill data on Firestore
             Task {
                 do {

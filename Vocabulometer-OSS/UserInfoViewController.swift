@@ -65,6 +65,8 @@ class UserInfoViewController: UIViewController {
                     configureNativeLanguageMenu()
                     configureGenderMenu()
                     userSkill = userInfo.skill
+                } catch {
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -195,7 +197,7 @@ class UserInfoViewController: UIViewController {
             } else {
                 let storyboard: UIStoryboard = self.storyboard!
                 let viewController = storyboard.instantiateViewController(withIdentifier: "SDQAStoryboard")
-                self.navigationController?.pushViewController(viewController, animated: true)
+                navigationController?.pushViewController(viewController, animated: true)
             }
         } catch {
             print(error.localizedDescription)
