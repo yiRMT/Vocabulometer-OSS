@@ -9,22 +9,11 @@ import Foundation
 import FirebaseAuth
 
 class Authentication {
-    let firebaseAuth = Auth.auth()
-    
-    func signOut() throws {
-        do {
-            try firebaseAuth.signOut()
-            UserDefaults.standard.set(false, forKey: "status")
-            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-        } catch {
-            print(error.localizedDescription)
-            throw error
-        }
-    }
+    let auth = Auth.auth()
     
     func signIn(withEmail email: String, password: String) async throws {
         do {
-            try await Auth.auth().signIn(withEmail: email, password: password)
+            try await auth.signIn(withEmail: email, password: password)
         } catch {
             throw error
         }
@@ -35,8 +24,18 @@ class Authentication {
             if password != repassword {
                 throw AuthenticationError.invalidPasswordConfirmation
             } else {
-                try await Auth.auth().createUser(withEmail: email, password: password)
+                try await auth.createUser(withEmail: email, password: password)
             }
+        } catch {
+            throw error
+        }
+    }
+    
+    func signOut() throws {
+        do {
+            try auth.signOut()
+            UserDefaults.standard.set(false, forKey: "status")
+            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
         } catch {
             throw error
         }
@@ -44,14 +43,14 @@ class Authentication {
     
     func sendPasswordReset(withEmail email: String) async throws {
         do {
-            try await Auth.auth().sendPasswordReset(withEmail: email)
+            try await auth.sendPasswordReset(withEmail: email)
         } catch {
             throw error
         }
     }
     
     func checkAuthState() throws -> String {
-        if let user = firebaseAuth.currentUser {
+        if let user = auth.currentUser {
             return user.uid
         } else {
             throw AuthenticationError.noUserIsSignedIn
