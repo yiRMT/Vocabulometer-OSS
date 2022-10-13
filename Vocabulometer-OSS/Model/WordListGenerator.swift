@@ -13,6 +13,7 @@ import FirebaseFirestore
 import NaturalLanguage
 
 class WordListGenerator {
+    let firestore = Firestore.firestore()
     let firestoreCollection = DatabaseManager().userDataCollection
     let originalAPIManager = OriginalAPIManager()
     let auth = AuthenticationManager()
@@ -381,8 +382,11 @@ class WordListGenerator {
     /// - Parameters:
     ///   - originalUnknownWords: チェック前の未知単語リスト
     ///   - checkedUnknownWords: チェック済みの未知単語リスト
-    ///   - completion: 終了後に行うことを記述
-    func updateWordList(originalUnknownWords: [String], checkedUnknownWords: [String], contentType: ContentType, sentences: [String:Sentence], totalWords: Int, videoID: String?, completion: @escaping () -> Void) {
+    ///   - contentType:
+    ///   - sentences:
+    ///   - totalWords:
+    ///   - videoID:
+    func updateWordList(originalUnknownWords: [String], checkedUnknownWords: [String], contentType: ContentType, sentences: [String:Sentence], totalWords: Int, videoID: String?) async throws {
         /// 既知単語を格納
         var knownWords = [String]()
         
@@ -392,194 +396,153 @@ class WordListGenerator {
             }
         }
         
-        /// UIDを取得　ドキュメントを探すのに必要
-        guard let userID = Auth.auth().currentUser?.uid else {
-            print("Cannot fetch userID")
-            return
-        }
-        
-        self.isLoading = true
-        
-        /// Storageに保存してあるファイルを読み取る
-        var wordListJsonUrl: URL?
-        let storage = Storage.storage()
-        let wordListReference = storage.reference(forURL: "gs://vocatest-1322f.appspot.com/\(userID)-wordlist.json")
-        
-        // Fetch the download URL
-        wordListReference.downloadURL { url, error in
-            // Error handling
-            if error != nil {
-                print(error!.localizedDescription)
-                print("fail get downloadURL")
-                return
+        do {
+            let uid = try auth.checkAuthState()
+            print("UID: \(uid)")
+            /// Storageに保存してあるファイルを読み取る
+            
+            let wordListReference = storage.reference(forURL: "gs://vocatest-1322f.appspot.com/\(uid)-wordlist.json")
+            
+            // URL to the user's word list in Firebase Storage
+            let wordListJsonUrl = try await wordListReference.downloadURL()
+            
+            print("OK")
+            // Access to the user's word list
+            let (data, _) = try await URLSession.shared.data(from: wordListJsonUrl)
+            print("OK")
+            
+            // Store the user's word list
+            var wordListJson = try JSON(data: data)
+            var unknownWordsDetailData = [String:Any]()
+            
+            /// 既知単語に対する処理
+            for word in knownWords {
+                /// 既知である確率を1に設定
+                wordListJson[word]["understand"] = JSON(1.0)
+                /// 見たことにあるにtrueを設定
+                wordListJson[word]["read"] = JSON(true)
+                
+                switch contentType {
+                case .article:
+                    try await firestore.collection(database.userDataCollection).document(uid).updateData(["unknownwords.\(word)": FieldValue.delete()])
+                    try await firestore.collection(database.userDataCollection).document(uid).updateData(["multiUnknownwords.\(word)": FieldValue.delete()])
+                }
+            }
+
+            var newWordsCount = 0
+            
+            /// 未知単語に対する処理
+            for word in checkedUnknownWords {
+                if !wordListJson[word]["read"].boolValue {
+                    newWordsCount += 1
+                    /// 見たことにあるにtrueを設定
+                    wordListJson[word]["read"] = JSON(true)
+                }
+                
+                /// 手動で登録する単語はunderstandの確率を変えてやる
+                if wordListJson[word]["understand"].doubleValue > 0.8 {
+                    wordListJson[word]["understand"] = JSON(0.79)
+                }
+                
+                let dt = Date()
+                let dateFormatter = DateFormatter()
+
+                // DateFormatter を使用して書式とロケールを指定する
+                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMd", options: 0, locale: Locale(identifier: "ja_JP"))
+                
+                let wordData: [String:Any] = [
+                    "original": word,
+                    "videoID": videoID ?? "",
+                    "startTime": sentences[word]?.startTime ?? 0.0,
+                    //"translatedWord" : "",
+                    "parts": wordListJson[word]["parts"].stringValue,
+                    "rank": wordListJson[word]["rank"].intValue,
+                    "understand": wordListJson[word]["understand"].doubleValue,
+                    "sentence": sentences[word]?.english ?? "",
+                    "translatedSentence": sentences[word]?.japanese ?? "",
+                    "lastTime": dateFormatter.string(from: dt),
+                    "remember": 0,
+                    "repetition" : 0,
+                    "view" : true,
+                    "contentType": contentType.rawValue
+                ]
+                
+                unknownWordsDetailData.updateValue(wordData, forKey: word)
+            }
+
+            print("Words: \(unknownWordsDetailData)")
+
+            switch contentType {
+            case .article:
+                let unknownWordsData = [
+                    "unknownwords" : unknownWordsDetailData,
+                    "multiUnknownwords" : unknownWordsDetailData
+                ]
+                
+                if !checkedUnknownWords.isEmpty {
+                    try await firestore.collection(database.userDataCollection).document(uid).setData(unknownWordsData, merge: true)
+                    
+                    for word in checkedUnknownWords {
+                        let translatedWord = try await originalAPIManager.translate(with: .google, word: word)
+                        let data = [
+                            "unknownwords" : [
+                                word : [
+                                    "translatedWord": translatedWord
+                                ]
+                            ],
+                            "multiUnknownwords" : [
+                                word : [
+                                    "translatedWord": translatedWord
+                                ]
+                            ]
+                        ]
+                        try await firestore.collection(database.userDataCollection).document(uid).setData(data, merge: true)
+                    }
+                }
+                break
+            }
+
+            let dt = Date()
+            let dateFormatter = DateFormatter()
+
+            // DateFormatter を使用して書式とロケールを指定する
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMd", options: 0, locale: Locale(identifier: "ja_JP"))
+            let today = dateFormatter.string(from: dt)
+            
+            var stats = totalWords
+            var statsNew = newWordsCount
+            
+            let documentSnapshot = try await firestore.collection(database.userDataCollection).document(uid).getDocument()
+            let results = documentSnapshot.data()
+            if let currentStatsData = results?["stats"] as? [String:Int] {
+                if let todayStats = currentStatsData[today] {
+                    print("statsが見つかりました: \(todayStats)")
+                    stats += todayStats
+                }
+            }
+            if let currentStatsNewData = results?["statsNew"] as? [String:Int] {
+                if let todayStatsNew = currentStatsNewData[today] {
+                    print("statsNewが見つかりました: \(todayStatsNew)")
+                    statsNew += todayStatsNew
+                }
             }
             
-            if url != nil {
-                // URL to the user's word list in Firebase Storage
-                wordListJsonUrl = url
-                                
-                // Access to the user's word list
-                URLSession.shared.dataTask(with: wordListJsonUrl!) { (data, response, error) in
-                    guard let data = data else {
-                        print("Error accessing word list in Firebase Storge")
-                        return
-                    }
-                    
-                    let document = userID
-                    
-                    // Store the user's word list
-                    var wordListJson = (try? JSON(data: data))!
-                    
-                    var unknownWordsDetailData = [String:Any]()
-                    
-                    /// 既知単語に対する処理
-                    for word in knownWords {
-                        /// 既知である確率を1に設定
-                        wordListJson[word]["understand"] = JSON(1.0)
-                        /// 見たことにあるにtrueを設定
-                        wordListJson[word]["read"] = JSON(true)
-                        
-                        switch contentType {
-                        case .article:
-                            Firestore.firestore().collection(self.firestoreCollection).document(document).updateData(["unknownwords.\(word)": FieldValue.delete()])
-                            Firestore.firestore().collection(self.firestoreCollection).document(document).updateData(["multiUnknownwords.\(word)": FieldValue.delete()])
-                        }
-                    }
-                    
-                    var newWordsCount = 0
-                    
-                    /// 未知単語に対する処理
-                    for word in checkedUnknownWords {
-                        if !wordListJson[word]["read"].boolValue {
-                            newWordsCount += 1
-                            /// 見たことにあるにtrueを設定
-                            wordListJson[word]["read"] = JSON(true)
-                        }
-                        
-                        
-                        
-                        /// 手動で登録する単語はunderstandの確率を変えてやる
-                        if wordListJson[word]["understand"].doubleValue > 0.8 {
-                            wordListJson[word]["understand"] = JSON(0.79)
-                        }
-                        
-                        let dt = Date()
-                        let dateFormatter = DateFormatter()
+            print("Stats: \(stats)")
+            print("StatsNew: \(statsNew)")
 
-                        // DateFormatter を使用して書式とロケールを指定する
-                        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMd", options: 0, locale: Locale(identifier: "ja_JP"))
-                        
-                        let wordData: [String:Any] = [
-                            "original": word,
-                            "videoID": videoID ?? "",
-                            //"translatedWord" : "",
-                            "parts": wordListJson[word]["parts"].stringValue,
-                            "rank": wordListJson[word]["rank"].intValue,
-                            "understand": wordListJson[word]["understand"].doubleValue,
-                            "sentence": sentences[word]?.english ?? "",
-                            "translatedSentence": sentences[word]?.japanese ?? "",
-                            "lastTime": dateFormatter.string(from: dt),
-                            "remember": 0,
-                            "repetition" : 0,
-                            "view" : true,
-                            "contentType": contentType.rawValue
-                        ]
-                        
-                        unknownWordsDetailData.updateValue(wordData, forKey: word)
-                    }
-                    
-                    print("Words: \(unknownWordsDetailData)")
-                    
-                    switch contentType {
-                    case .article:
-                        let unknownWordsData = [
-                            "unknownwords" : unknownWordsDetailData,
-                            "multiUnknownwords" : unknownWordsDetailData
-                        ]
-                        
-                        if !checkedUnknownWords.isEmpty {
-                            Firestore.firestore().collection(self.firestoreCollection).document(document).setData(unknownWordsData, merge: true)
-                            
-                            for word in checkedUnknownWords {
-                                self.originalAPIManager.translate(with: .google, word: word) { translatedWord in
-                                    let data = [
-                                        "unknownwords" : [
-                                            word : [
-                                                "translatedWord": translatedWord
-                                            ]
-                                        ],
-                                        "multiUnknownwords" : [
-                                            word : [
-                                                "translatedWord": translatedWord
-                                            ]
-                                        ]
-                                    ]
-                                    Firestore.firestore().collection(self.firestoreCollection).document(document).setData(data, merge: true)
-                                }
-                            }
-                        }
-                        break
-                    }
-                    
-                    let dt = Date()
-                    let dateFormatter = DateFormatter()
-
-                    // DateFormatter を使用して書式とロケールを指定する
-                    dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMd", options: 0, locale: Locale(identifier: "ja_JP"))
-                    let today = dateFormatter.string(from: dt)
-                    
-                    var stats = totalWords
-                    var statsNew = newWordsCount
-                    
-                    
-                    Firestore.firestore().collection(self.firestoreCollection).document(document).getDocument { (documentSnapshot, error) in
-                        if let document = documentSnapshot {
-                            let results = document.data()
-                            if let currentStatsData = results?["stats"] as? [String:Int] {
-                                if let todayStats = currentStatsData[today] {
-                                    print("statsが見つかりました: \(todayStats)")
-                                    stats += todayStats
-                                }
-                            }
-                            if let currentStatsNewData = results?["statsNew"] as? [String:Int] {
-                                if let todayStatsNew = currentStatsNewData[today] {
-                                    print("statsNewが見つかりました: \(todayStatsNew)")
-                                    statsNew += todayStatsNew
-                                }
-                            }
-                        }
-                        
-                        print("Stats: \(stats)")
-                        print("StatsNew: \(statsNew)")
-                        
-                        Firestore.firestore().collection(self.firestoreCollection).document(document).setData(["stats": [today: stats]], merge: true)
-                        Firestore.firestore().collection(self.firestoreCollection).document(document).setData(["statsNew": [today: statsNew]], merge: true)
-                    }
-                    
-                    // Firebase Storage
-                    let storage = Storage.storage()
-                    if let wordlistData = try? wordListJson.rawData() {
-                        let metadata = StorageMetadata()
-                        metadata.contentType = "application/json"
-                        guard let userID = Auth.auth().currentUser?.uid else {
-                            print("Cannot fetch userID")
-                            return
-                        }
-                        storage.reference(withPath: "\(userID)-wordlist.json").putData(wordlistData, metadata: metadata)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.isLoading = false
-                        completion()
-                    }
-                }.resume()
-            } else {
-                print("url is nil")
-                return
-            }
+            try await firestore.collection(database.userDataCollection).document(uid).setData(["stats": [today: stats]], merge: true)
+            try await firestore.collection(database.userDataCollection).document(uid).setData(["statsNew": [today: statsNew]], merge: true)
+            
+            // Firebase Storage
+            let wordListData = try wordListJson.rawData()
+            let metadata = StorageMetadata()
+            metadata.contentType = "application/json"
+            let _ = try await storage.reference(withPath: "\(uid)-wordlist.json").putDataAsync(wordListData, metadata: metadata)
+        } catch {
+            throw error
         }
     }
-    
+
     func updateTranslation(of word: String, to translation: String, type: ContentType) {
         guard let userID = Auth.auth().currentUser?.uid else {
             print("Cannot fetch userID")

@@ -189,7 +189,7 @@ class UserInfoViewController: UIViewController {
         let userInfoData = UserInfo(age: Int(ageTextField.text!) ?? 20, nativeLanguage: selectedNativeLanguageType.rawValue, gender: selectedGenderType.rawValue, skill: userSkill)
         
         do {
-            try database.storeUserInfo(of: userInfoData)
+            try database.storeUserInfo(of: userInfoData, isHomeView: isHomeView)
             
             /// 初期設定かHomeViewかで画面遷移を変える
             if isHomeView {
