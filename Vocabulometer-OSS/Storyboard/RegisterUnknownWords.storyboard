@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Unknown Words-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="RegisterUnknownWordsView" title="Unknown Words" id="Y6W-OH-hqX" customClass="RegisterUnknownWordsViewController" customModule="MultimediaVocabulometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1W-Fs-qTy">
+                                <rect key="frame" x="20" y="807.5" width="374" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Register">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tapRegisterButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pzj-TU-KfR"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GKN-u9-cDm">
+                                <rect key="frame" x="0.0" y="85" width="414" height="702.5"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="registerUnknwonWordsTableViewCell" id="C9x-hh-Rm9">
+                                        <rect key="frame" x="20" y="49.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C9x-hh-Rm9" id="SXn-Sz-4ZF">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check the unknown words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJd-Z4-IAP">
+                                <rect key="frame" x="80.5" y="54" width="253" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="N1W-Fs-qTy" secondAttribute="trailing" constant="20" id="9Qq-rs-NpK"/>
+                            <constraint firstItem="GKN-u9-cDm" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Pwe-Cj-NmP"/>
+                            <constraint firstItem="GKN-u9-cDm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bbQ-dB-dp4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="N1W-Fs-qTy" secondAttribute="bottom" constant="20" id="bzd-yF-IoC"/>
+                            <constraint firstItem="NJd-Z4-IAP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="hjv-17-AcI"/>
+                            <constraint firstItem="N1W-Fs-qTy" firstAttribute="top" secondItem="GKN-u9-cDm" secondAttribute="bottom" constant="20" id="lEc-eC-eKp"/>
+                            <constraint firstItem="NJd-Z4-IAP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="lnb-1G-5uj"/>
+                            <constraint firstItem="GKN-u9-cDm" firstAttribute="top" secondItem="NJd-Z4-IAP" secondAttribute="bottom" constant="10" id="sgp-ll-eMp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GKN-u9-cDm" secondAttribute="trailing" id="xrb-R0-LH4"/>
+                            <constraint firstItem="N1W-Fs-qTy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="zpZ-HF-Mhb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="registerUnknownWordsTableView" destination="GKN-u9-cDm" id="FWH-Pq-0HC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.086956521739133" y="112.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
