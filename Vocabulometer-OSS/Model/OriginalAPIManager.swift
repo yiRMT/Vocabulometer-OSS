@@ -10,6 +10,45 @@ import Foundation
 class OriginalAPIManager {
     var translatedResult = ""
     
+    func translate(with api: TranslateType, word: String) async throws -> String {
+        var apiURL: String {
+            switch api {
+            case .google:
+                return "https://script.google.com/macros/s/AKfycbzt9lEf3151KgLRjbaOu5sdTn4hBBY1Y9ZgLxVIiyBALA37Xe5sPQnn3KWeVTCl1tow/exec?text=\(word)&source=en&target=ja"
+            case .deepL:
+                return "Write API url here"
+            }
+        }
+        
+        guard let url = URL(string: apiURL) else {
+            throw APIClientError.invalidURL
+        }
+        
+        do {
+            let (data, urlResponse) = try await URLSession.shared.data(from: url)
+            guard let httpStatus = urlResponse as? HTTPURLResponse else {
+                throw APIClientError.responseError
+            }
+            
+            switch httpStatus.statusCode {
+            case 200 ..< 400:
+                guard let response = try? JSONDecoder().decode(GoogleTranslateResponse.self, from: data) else {
+                    throw APIClientError.noData
+                }
+                
+                return response.translated
+            case 400... :
+                throw APIClientError.badStatus(statusCode: httpStatus.statusCode)
+            default:
+                fatalError()
+                break
+            }
+        } catch {
+            throw APIClientError.serverError(error)
+        }
+    }
+
+    
     func translate(with api: TranslateType, word: String, completion: @escaping (String) -> Void) {
         print("Checking translation")
         

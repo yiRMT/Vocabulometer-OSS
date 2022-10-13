@@ -63,13 +63,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                             self.window?.rootViewController = rootViewController
                             self.window?.makeKeyAndVisible()
                         }
-                    } catch DatabaseError.userDataNotStored {
+                    } catch UserInfoError.userDataNotStored {
                         let rootViewController = UIStoryboard(name: "Setup", bundle: Bundle.main).instantiateViewController(withIdentifier: "UserInfo") as! UserInfoViewController
                         DispatchQueue.main.async {
                             self.window?.rootViewController = rootViewController
                             self.window?.makeKeyAndVisible()
                         }
-                    } catch DatabaseError.userWordlistNotStored {
+                    } catch UserInfoError.userWordlistNotStored {
                         let rootViewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "SDQAStoryboard") as! SDQAViewController
                         DispatchQueue.main.async {
                             self.window?.rootViewController = rootViewController
