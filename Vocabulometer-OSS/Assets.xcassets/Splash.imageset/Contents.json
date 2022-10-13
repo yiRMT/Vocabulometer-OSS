@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "dark_splash.png",
+      "filename" : "light_splash.png",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "light_splash.png",
+      "filename" : "dark_splash.png",
       "idiom" : "universal"
     }
   ],
