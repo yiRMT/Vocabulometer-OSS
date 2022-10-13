@@ -161,6 +161,45 @@ class DatabaseManager {
             throw error
         }
     }
+    
+    var wordData = [String:[String:Any]]()
+    var wordDataKeys = [String]()
+    
+    func getWordData(contentType: ContentType) async throws {
+        do {
+            let uid = try auth.checkAuthState()
+            let docRef = firestore.collection(userDataCollection).document(uid)
+            let documentSnapshot = try await docRef.getDocument()
+            let data = documentSnapshot.data()
+            var fieldName = ""
+            switch contentType {
+            case .article:
+                fieldName = "unknownwords"
+            }
+            if let wordData = data?[fieldName] as? [String:[String:Any]] {
+                self.wordData = wordData
+                self.wordDataKeys = Array(wordData.keys).sorted()
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    func removeWordData(contentType: ContentType, word: String) async throws {
+        var fieldName = ""
+        switch contentType {
+        case .article:
+            fieldName = "unknownwords"
+        }
+        do {
+            let uid = try auth.checkAuthState()
+            let docRef = firestore.collection(userDataCollection).document(uid)
+            try await docRef.updateData(["\(fieldName).\(word)": FieldValue.delete()])
+        } catch {
+            throw error
+        }
+    }
+
 }
 
 enum UserInfoError: Error, LocalizedError {
