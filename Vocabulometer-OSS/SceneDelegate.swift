@@ -54,8 +54,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             Auth.auth().removeStateDidChangeListener(self.handle!)
             
             if user != nil {
-                DispatchQueue.main.async {
-                    self.switchToMainView()
+                let database = DatabaseManager()
+                Task {
+                    do {
+                        try await database.checkUserDataStored()
+                        let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainNavigationController")
+                        DispatchQueue.main.async {
+                            self.window?.rootViewController = rootViewController
+                            self.window?.makeKeyAndVisible()
+                        }
+                    } catch UserInfoError.userDataNotStored {
+                        let rootViewController = UIStoryboard(name: "Setup", bundle: Bundle.main).instantiateViewController(withIdentifier: "UserInfo") as! UserInfoViewController
+                        DispatchQueue.main.async {
+                            self.window?.rootViewController = rootViewController
+                            self.window?.makeKeyAndVisible()
+                        }
+                    } catch UserInfoError.userWordlistNotStored {
+                        let rootViewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "SDQAStoryboard") as! SDQAViewController
+                        DispatchQueue.main.async {
+                            self.window?.rootViewController = rootViewController
+                            self.window?.makeKeyAndVisible()
+                        }
+                    }
                 }
             } else {
                 //認証されていなければ初期画面表示
@@ -64,10 +84,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    func switchToMainView() {
-        //認証されていればメインのViewに遷移
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! MainViewController
-        window?.rootViewController = vc
-    }
 }
 
