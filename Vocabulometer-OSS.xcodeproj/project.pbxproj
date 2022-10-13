@@ -18,6 +18,10 @@
 		672154BE28F685C6007BF3F7 /* ArticleListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672154BC28F685C6007BF3F7 /* ArticleListTableViewCell.xib */; };
 		672154BF28F685C6007BF3F7 /* ArticleMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 672154BD28F685C6007BF3F7 /* ArticleMenu.storyboard */; };
 		672154C128F6865E007BF3F7 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672154C028F6865E007BF3F7 /* BrowseViewController.swift */; };
+		672154C328F71684007BF3F7 /* RegisterUnknownWords.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 672154C228F71684007BF3F7 /* RegisterUnknownWords.storyboard */; };
+		672154C528F71698007BF3F7 /* RegisterUnknownWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672154C428F71698007BF3F7 /* RegisterUnknownWordsViewController.swift */; };
+		672154C728F71765007BF3F7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672154C628F71765007BF3F7 /* APIClient.swift */; };
+		672154C928F71985007BF3F7 /* Newsela in Resources */ = {isa = PBXBuildFile; fileRef = 672154C828F71985007BF3F7 /* Newsela */; };
 		6771BBAC28D388CD00D74F10 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6771BBAB28D388CD00D74F10 /* Home.storyboard */; };
 		6771BBAE28D389B500D74F10 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6771BBAD28D389B500D74F10 /* Browse.storyboard */; };
 		677E70DC28DF801F003AFBCD /* SDQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677E70DB28DF801F003AFBCD /* SDQAViewController.swift */; };
@@ -66,6 +70,10 @@
 		672154BC28F685C6007BF3F7 /* ArticleListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleListTableViewCell.xib; sourceTree = "<group>"; };
 		672154BD28F685C6007BF3F7 /* ArticleMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ArticleMenu.storyboard; sourceTree = "<group>"; };
 		672154C028F6865E007BF3F7 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		672154C228F71684007BF3F7 /* RegisterUnknownWords.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegisterUnknownWords.storyboard; sourceTree = "<group>"; };
+		672154C428F71698007BF3F7 /* RegisterUnknownWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUnknownWordsViewController.swift; sourceTree = "<group>"; };
+		672154C628F71765007BF3F7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		672154C828F71985007BF3F7 /* Newsela */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Newsela; sourceTree = "<group>"; };
 		6771BBAB28D388CD00D74F10 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6771BBAD28D389B500D74F10 /* Browse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
 		677E70DB28DF801F003AFBCD /* SDQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDQAViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +172,7 @@
 		672154A728F67D7C007BF3F7 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				672154C828F71985007BF3F7 /* Newsela */,
 				6789A97528DF15490042478C /* SanDiegoQuickAsessment.json */,
 				677E70DE28DF8539003AFBCD /* Lemma.json */,
 				677E70E128DF853A003AFBCD /* Namelist.json */,
@@ -176,6 +185,7 @@
 		672154A828F67DD6007BF3F7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				672154C228F71684007BF3F7 /* RegisterUnknownWords.storyboard */,
 				679AB2C628D24F95005E8B94 /* Authentication.storyboard */,
 				6789A96928DE46B00042478C /* Setup.storyboard */,
 				67F856DD28D1A96E00C66426 /* Main.storyboard */,
@@ -199,6 +209,7 @@
 		672154B028F6851C007BF3F7 /* Learning Contents */ = {
 			isa = PBXGroup;
 			children = (
+				672154C428F71698007BF3F7 /* RegisterUnknownWordsViewController.swift */,
 				672154B128F6852A007BF3F7 /* Article */,
 			);
 			path = "Learning Contents";
@@ -242,6 +253,7 @@
 				67F856D728D1A96E00C66426 /* AppDelegate.swift */,
 				67F856D928D1A96E00C66426 /* SceneDelegate.swift */,
 				672154AE28F68466007BF3F7 /* Wrapper.swift */,
+				672154C628F71765007BF3F7 /* APIClient.swift */,
 				672154A928F67ECA007BF3F7 /* Extention */,
 				672154A528F67D51007BF3F7 /* Model */,
 				672154A828F67DD6007BF3F7 /* Storyboard */,
@@ -331,6 +343,8 @@
 				6789A97628DF15490042478C /* SanDiegoQuickAsessment.json in Resources */,
 				677E70E228DF853A003AFBCD /* Lemma.json in Resources */,
 				67F856EC28D1A9F600C66426 /* README.md in Resources */,
+				672154C928F71985007BF3F7 /* Newsela in Resources */,
+				672154C328F71684007BF3F7 /* RegisterUnknownWords.storyboard in Resources */,
 				67F856DF28D1A96E00C66426 /* Main.storyboard in Resources */,
 				679AB2C828D2509F005E8B94 /* GoogleService-Info.plist in Resources */,
 				67F856EE28D1AA0300C66426 /* LICENSE in Resources */,
@@ -408,11 +422,13 @@
 				672154B828F68579007BF3F7 /* ArticleMenuViewController.swift in Sources */,
 				672154AB28F6835C007BF3F7 /* ArticleManager.swift in Sources */,
 				67F2386528ECA2E800F5147A /* HomeViewController.swift in Sources */,
+				672154C528F71698007BF3F7 /* RegisterUnknownWordsViewController.swift in Sources */,
 				67F856DA28D1A96E00C66426 /* SceneDelegate.swift in Sources */,
 				672154BB28F68579007BF3F7 /* ArticleListTableViewCell.swift in Sources */,
 				67BD428F28DE366A009975E5 /* UIViewController+Alert.swift in Sources */,
 				677E70E728DF89B6003AFBCD /* ContentsManager.swift in Sources */,
 				677E70E928DF89EB003AFBCD /* OriginalAPIManager.swift in Sources */,
+				672154C728F71765007BF3F7 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

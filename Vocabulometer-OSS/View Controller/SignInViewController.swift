@@ -80,11 +80,11 @@ class SignInViewController: UIViewController {
                 viewController.modalPresentationStyle = .fullScreen
                 viewController.modalTransitionStyle = .crossDissolve
                 present(viewController, animated: true)
-            } catch DatabaseError.userDataNotStored {
+            } catch UserInfoError.userDataNotStored {
                 // Transition to UserInfo input view
                 let viewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "UserInfo") as! UserInfoViewController
                 navigationController?.pushViewController(viewController, animated: true)
-            } catch DatabaseError.userWordlistNotStored {
+            } catch UserInfoError.userWordlistNotStored {
                 // Transition to UserInfo input view
                 let viewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "SDQAStoryboard") as! SDQAViewController
                 navigationController?.pushViewController(viewController, animated: true)
