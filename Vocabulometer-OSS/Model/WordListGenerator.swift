@@ -401,7 +401,7 @@ class WordListGenerator {
             print("UID: \(uid)")
             /// Storageに保存してあるファイルを読み取る
             
-            let wordListReference = storage.reference(forURL: "gs://vocatest-1322f.appspot.com/\(uid)-wordlist.json")
+            let wordListReference = storage.reference(forURL: "gs://vocabulometer-oss.appspot.com/\(uid)-wordlist.json")
             
             // URL to the user's word list in Firebase Storage
             let wordListJsonUrl = try await wordListReference.downloadURL()
