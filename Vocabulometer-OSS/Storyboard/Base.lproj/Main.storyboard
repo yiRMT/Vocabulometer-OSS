@@ -11,9 +11,9 @@
             <objects>
                 <tabBarController id="lwh-HK-gvV" customClass="MainTabBarController" customModule="Vocabulometer_OSS" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="PD9-F5-HP6">
-                        <barButtonItem key="rightBarButtonItem" image="door.left.hand.open" catalog="system" id="8ai-Cz-4MI">
+                        <barButtonItem key="rightBarButtonItem" image="gear" catalog="system" id="8ai-Cz-4MI">
                             <connections>
-                                <action selector="tapSignOutButton:" destination="lwh-HK-gvV" id="0Yx-a8-UaR"/>
+                                <action selector="tapSettingsButton:" destination="lwh-HK-gvV" id="ufb-GU-pVL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -25,6 +25,7 @@
                     <connections>
                         <segue destination="1hv-UA-Oz3" kind="relationship" relationship="viewControllers" id="qoz-pb-KS2"/>
                         <segue destination="g8I-Kh-a1j" kind="relationship" relationship="viewControllers" id="pSF-t4-SL7"/>
+                        <segue destination="D5q-7b-3l8" kind="relationship" relationship="viewControllers" id="qJW-DG-etR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Is-Hg-Ahn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -39,7 +40,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nd-h6-91W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="392"/>
+            <point key="canvasLocation" x="958" y="392"/>
+        </scene>
+        <!--ReviewMenu-->
+        <scene sceneID="bQG-pj-oqr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ReviewMenu" id="D5q-7b-3l8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="3LP-ay-Pho"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9oq-kW-qLw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216" y="392"/>
         </scene>
         <!--Home-->
         <scene sceneID="g67-VK-ZBO">
@@ -49,7 +60,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4o-y1-RAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="392"/>
+            <point key="canvasLocation" x="708" y="392"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fol-g6-c6w">
@@ -71,6 +82,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="door.left.hand.open" catalog="system" width="108" height="128"/>
+        <image name="gear" catalog="system" width="128" height="122"/>
     </resources>
 </document>

@@ -14,6 +14,10 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let imageView = UIImageView(image: UIImage(named: "Navigation Icon"))
+        imageView.contentMode = .scaleAspectFit
+        
+        navigationItem.titleView = imageView
     }
     
 
@@ -26,17 +30,9 @@ class MainTabBarController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func tapSignOutButton(_ sender: Any) {
-        do {
-            try auth.signOut()
-            let storyboard: UIStoryboard = UIStoryboard(name: "Authentication", bundle: Bundle.main)
-            let next = storyboard.instantiateViewController(withIdentifier: "AuthenticationNavigationController")
-            next.modalPresentationStyle = .fullScreen
-            next.modalTransitionStyle = .crossDissolve
-            self.present(next, animated: true, completion: nil)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
     
+    @IBAction func tapSettingsButton(_ sender: Any) {
+        let viewController = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsView") as! SettingsViewController
+        navigationController?.pushViewController(viewController, animated: true)
+    }    
 }
