@@ -236,7 +236,6 @@
 		672154A828F67DD6007BF3F7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				672154C228F71684007BF3F7 /* RegisterUnknownWords.storyboard */,
 				679AB2C628D24F95005E8B94 /* Authentication.storyboard */,
 				6789A96928DE46B00042478C /* Setup.storyboard */,
 				67F856DD28D1A96E00C66426 /* Main.storyboard */,
@@ -244,6 +243,7 @@
 				6771BBAD28D389B500D74F10 /* Browse.storyboard */,
 				672154BC28F685C6007BF3F7 /* ArticleListTableViewCell.xib */,
 				672154BD28F685C6007BF3F7 /* ArticleMenu.storyboard */,
+				672154C228F71684007BF3F7 /* RegisterUnknownWords.storyboard */,
 				672154CE28F79C60007BF3F7 /* ReviewMenu.storyboard */,
 				672154CC28F79C40007BF3F7 /* ArticleFlashcard.storyboard */,
 				672154F328F79E43007BF3F7 /* WordList.storyboard */,
