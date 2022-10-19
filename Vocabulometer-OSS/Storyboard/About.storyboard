@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--About-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="AboutView" title="About" id="Y6W-OH-hqX" customClass="AboutViewController" customModule="Vocabulometer_OSS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgQ-f7-N6q">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="199-Ox-fNx" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1004"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="xFI-wG-YRl">
+                                                <rect key="frame" x="140" y="20" width="134" height="109"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vocabulometer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QG-Nv-c1N">
+                                                <rect key="frame" x="10" y="149" width="394" height="41"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3n-8T-kqC">
+                                                <rect key="frame" x="165.5" y="210" width="83" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yih-Bf-0Uh">
+                                                <rect key="frame" x="20" y="250.5" width="374" height="459"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About the App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8P-Zd-H5t">
+                                                        <rect key="frame" x="100" y="0.0" width="174.5" height="33.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jM9-wl-bZt">
+                                                        <rect key="frame" x="116" y="53.5" width="142.5" height="46"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVELOPER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hu7-Cb-sXz">
+                                                                <rect key="frame" x="24" y="0.0" width="94.5" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yuichiro IWASHITA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-Qs-rIc">
+                                                                <rect key="frame" x="0.0" y="25.5" width="142.5" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XpU-s5-mtS">
+                                                        <rect key="frame" x="0.0" y="119.5" width="374" height="259.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABOUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebn-Dh-Og3">
+                                                                <rect key="frame" x="158.5" y="0.0" width="57" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLG-LC-QYq">
+                                                                <rect key="frame" x="0.0" y="25.5" width="374" height="81.5"/>
+                                                                <string key="text">This project has been developed by students from the Intelligent Media Processing labratory, in the Osaka Prefecture University / Osaka Metropolitan University.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgj-2P-IeF">
+                                                                <rect key="frame" x="0.0" y="112" width="374" height="81.5"/>
+                                                                <string key="text">This app has been created for research purpose, as part of exploring how to use new technology devices such as smartphones to enhance people's lives.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The original Vocabulometer web application has been developed by the IMP lab (OPU / OMU) and University of Bordeaux students." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVb-FU-tct">
+                                                                <rect key="frame" x="0.0" y="198.5" width="374" height="61"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="J3h-sm-wQV">
+                                                        <rect key="frame" x="59.5" y="399" width="255" height="60"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lf-ia-JeU">
+                                                                <rect key="frame" x="88.5" y="0.0" width="78" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYg-1P-3np">
+                                                                <rect key="frame" x="0.0" y="25.5" width="255" height="34.5"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="imp.vocameter.ios@gmail.com">
+                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="tapEmailButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C8z-ky-qp9"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2022 Vocabulometer. All Rights Reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-bs-S66">
+                                                <rect key="frame" x="81.5" y="969.5" width="251" height="14.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="6QG-Nv-c1N" secondAttribute="trailing" constant="10" id="2qd-50-0UL"/>
+                                            <constraint firstItem="V3n-8T-kqC" firstAttribute="top" secondItem="6QG-Nv-c1N" secondAttribute="bottom" constant="20" id="4s0-SF-OFG"/>
+                                            <constraint firstAttribute="bottom" secondItem="gDS-bs-S66" secondAttribute="bottom" constant="20" id="6Jc-pg-IDP"/>
+                                            <constraint firstItem="Yih-Bf-0Uh" firstAttribute="top" secondItem="V3n-8T-kqC" secondAttribute="bottom" constant="20" id="EjO-qO-YCq"/>
+                                            <constraint firstItem="xFI-wG-YRl" firstAttribute="leading" secondItem="199-Ox-fNx" secondAttribute="leading" constant="140" id="Kex-JZ-TWM"/>
+                                            <constraint firstItem="xFI-wG-YRl" firstAttribute="centerX" secondItem="199-Ox-fNx" secondAttribute="centerX" id="NKc-4e-qy5"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yih-Bf-0Uh" secondAttribute="trailing" constant="20" id="Neg-S9-emX"/>
+                                            <constraint firstItem="6QG-Nv-c1N" firstAttribute="top" secondItem="xFI-wG-YRl" secondAttribute="bottom" constant="20" id="PcQ-Wf-ef2"/>
+                                            <constraint firstAttribute="height" constant="1004" id="TR4-F0-Wat"/>
+                                            <constraint firstAttribute="trailing" secondItem="xFI-wG-YRl" secondAttribute="trailing" constant="140" id="ezM-fN-IfF"/>
+                                            <constraint firstItem="gDS-bs-S66" firstAttribute="centerX" secondItem="199-Ox-fNx" secondAttribute="centerX" id="hhs-9s-Xm4"/>
+                                            <constraint firstItem="6QG-Nv-c1N" firstAttribute="leading" secondItem="199-Ox-fNx" secondAttribute="leading" constant="10" id="jpz-Bq-b5f"/>
+                                            <constraint firstItem="6QG-Nv-c1N" firstAttribute="centerX" secondItem="199-Ox-fNx" secondAttribute="centerX" id="k1q-UG-Rk2"/>
+                                            <constraint firstItem="Yih-Bf-0Uh" firstAttribute="leading" secondItem="199-Ox-fNx" secondAttribute="leading" constant="20" id="lDJ-dZ-oDv"/>
+                                            <constraint firstItem="xFI-wG-YRl" firstAttribute="top" secondItem="199-Ox-fNx" secondAttribute="top" constant="20" id="lge-tf-xq3"/>
+                                            <constraint firstItem="V3n-8T-kqC" firstAttribute="centerX" secondItem="199-Ox-fNx" secondAttribute="centerX" id="rdn-bX-1Es"/>
+                                            <constraint firstItem="gDS-bs-S66" firstAttribute="leading" secondItem="199-Ox-fNx" secondAttribute="leading" constant="81.5" id="zxb-AD-aly"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="199-Ox-fNx" firstAttribute="trailing" secondItem="RBX-wG-Wn9" secondAttribute="trailing" id="Jrn-jU-izb"/>
+                                    <constraint firstItem="199-Ox-fNx" firstAttribute="width" secondItem="Jhq-oV-uJu" secondAttribute="width" id="VkM-Q9-RVz"/>
+                                    <constraint firstItem="199-Ox-fNx" firstAttribute="leading" secondItem="RBX-wG-Wn9" secondAttribute="leading" id="rDT-07-2bd"/>
+                                    <constraint firstItem="199-Ox-fNx" firstAttribute="bottom" secondItem="RBX-wG-Wn9" secondAttribute="bottom" id="vIZ-Hs-hsM"/>
+                                    <constraint firstItem="199-Ox-fNx" firstAttribute="top" secondItem="RBX-wG-Wn9" secondAttribute="top" id="x3P-0g-NV3"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="RBX-wG-Wn9"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Jhq-oV-uJu"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tgQ-f7-N6q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2nU-kq-LsV"/>
+                            <constraint firstItem="tgQ-f7-N6q" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Xqg-QR-fBw"/>
+                            <constraint firstItem="tgQ-f7-N6q" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="YlD-OI-fPs"/>
+                            <constraint firstItem="tgQ-f7-N6q" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="cK0-wU-Lrf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailButton" destination="dYg-1P-3np" id="9Ps-PB-nOc"/>
+                        <outlet property="versionLabel" destination="V3n-8T-kqC" id="81W-wy-NWi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.188405797101453" y="79.6875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Logo" width="100" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
