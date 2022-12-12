@@ -87,7 +87,7 @@ extension SettingsViewController: UITableViewDelegate {
                 
         switch items[indexPath.section][indexPath.row] {
         case "User Info":
-            let viewController = UIStoryboard(name: "UserSettings", bundle: nil).instantiateViewController(withIdentifier: "UserInfoStoryboard") as! UserInfoViewController
+            let viewController = UIStoryboard(name: "Setup", bundle: nil).instantiateViewController(withIdentifier: "UserInfo") as! UserInfoViewController
             viewController.isHomeView = true
             navigationController?.pushViewController(viewController, animated: true)
         case "About":
